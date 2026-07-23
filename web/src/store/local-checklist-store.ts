@@ -2,12 +2,13 @@
 import { $, useStore, useOnWindow } from '@builder.io/qwik';
 import jsyaml from 'js-yaml';
 import type { Sections } from '~/types/PSC';
+import { withBase } from '~/utils/base';
 
 export const useChecklist = () => {
   const state = useStore<{ checklist: Sections | null }>({ checklist: null });
 
   const fetchChecklist = $(async () => {
-    const localUrl = '/personal-security-checklist.yml';
+    const localUrl = withBase('/personal-security-checklist.yml');
     return fetch(localUrl)
       .then((res) => res.text())
       .then((yamlText) => {

@@ -3,6 +3,7 @@ import { component$, useContext } from "@builder.io/qwik";
 import { ChecklistContext } from '~/store/checklist-context';
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import { useChecklist } from '~/store/local-checklist-store';
+import { withBase } from '~/utils/base';
 import type { Section } from "~/types/PSC";
 
 export default component$(() => {
@@ -45,7 +46,7 @@ export default component$(() => {
               })
               }
               <div class="card-actions justify-end">
-                <a href={`/checklist/${section.slug}`}>
+                <a href={withBase(`/checklist/${section.slug}`)}>
                   <button class={`btn text-base-100 bg-${section.color}-400 hover:bg-${section.color}-600`}>
                     View Full Checklist ➜
                   </button>

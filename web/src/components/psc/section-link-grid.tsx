@@ -3,6 +3,7 @@ import { $, component$, useOnWindow, useSignal } from "@builder.io/qwik";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import type { Checklist, Section } from '~/types/PSC';
 import Icon from '~/components/core/icon';
+import { withBase } from '~/utils/base';
 import styles from './psc.module.css';
 
 export default component$((props: { sections: Section[] }) => {
@@ -46,7 +47,7 @@ export default component$((props: { sections: Section[] }) => {
       'transition-all', 'max-w-6xl w-full']}>
       {props.sections.map((section: Section, index: number) => (                   
         <a key={section.slug}
-          href={`/checklist/${section.slug}`}
+          href={withBase(`/checklist/${section.slug}`)}
           class={[
             'card card-side bg-front bg-opacity-25 shadow-md transition-all px-2',
             `outline-offset-2 outline-${section.color}-400`,

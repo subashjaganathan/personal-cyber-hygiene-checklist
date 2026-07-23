@@ -6,6 +6,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig((): UserConfig => {
   return {
+    base: "/security-checklist/",
     plugins: [
       qwikCity(),
       qwikVite(),
