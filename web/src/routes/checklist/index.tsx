@@ -17,7 +17,7 @@ export default component$(() => {
 
   /**
    * Sections filtered by the search term. A section is kept if its own title
-   * matches, or if any of its checklist points or details do — in which case
+   * matches, or if any of its checklist points or details do, in which case
    * only the matching points are shown.
    */
   const visibleSections = useComputed$(() => {

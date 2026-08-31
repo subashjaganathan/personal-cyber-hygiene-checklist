@@ -11,7 +11,7 @@ export default component$(() => {
       <p>
         Built &amp; maintained by{' '}
         <a href={authorLink} class="link link-primary font-semibold">Subash Jaganathan</a>
-        <span class="opacity-70"> · DFIR Expert</span> —
+        <span class="opacity-70"> · DFIR Expert</span> ·
         View source on <a href={ghLink} class="link link-primary">GitHub</a>
       </p>
     </aside>

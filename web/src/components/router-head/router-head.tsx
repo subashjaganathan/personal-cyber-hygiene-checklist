@@ -21,7 +21,7 @@ export const RouterHead = component$(() => {
 
       {/* Basics */}
       <title>{head.title || 'Cyber Hygiene · Practical Digital Security'}</title>
-      <meta name="description" content="Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more." />
+      <meta name="description" content="Practical digital security, one step at a time. A free, open checklist covering authentication, browsing, devices, networks, AI and more." />
 
       {/* Site config */}
       <meta name="author" content="Subash Jaganathan" />
@@ -37,14 +37,14 @@ export const RouterHead = component$(() => {
       <meta property="og:type" content="website" />
       <meta property="og:url" content={loc.url.href} />
       <meta property="og:title" content="Cyber Hygiene · Practical Digital Security" />
-      <meta property="og:description" content="Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more." />
+      <meta property="og:description" content="Practical digital security, one step at a time. A free, open checklist covering authentication, browsing, devices, networks, AI and more." />
       <meta property="og:image" content={withBase("/banner.png")} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={loc.url.href} />
       <meta property="twitter:title" content="Cyber Hygiene · Practical Digital Security" />
-      <meta name="twitter:description" content="Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more." />
+      <meta name="twitter:description" content="Practical digital security, one step at a time. A free, open checklist covering authentication, browsing, devices, networks, AI and more." />
       <meta name="twitter:image" content={withBase("/banner.png")} />
 
       {head.meta.map((m) => (

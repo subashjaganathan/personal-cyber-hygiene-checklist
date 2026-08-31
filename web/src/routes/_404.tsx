@@ -12,7 +12,7 @@ export default component$(() => {
       </p>
       <h1 class="text-2xl font-bold mt-2">Page not found</h1>
       <p class="opacity-70 mt-2 max-w-md">
-        That checklist doesn't exist — it may have been renamed or moved.
+        That checklist doesn't exist. It may have been renamed or moved.
       </p>
       <div class="flex flex-wrap gap-3 justify-center mt-8">
         <a href={withBase('/')}>

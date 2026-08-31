@@ -69,7 +69,7 @@ export default component$(() => {
         restored.forEach((key) => localStorage.setItem(key, JSON.stringify(payload[key])));
         location.reload();
       } catch {
-        alert('Could not read that file — is it a Cyber Hygiene export?');
+        alert('Could not read that file. Is it a Cyber Hygiene export?');
       }
     });
   });

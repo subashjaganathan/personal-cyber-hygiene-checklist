@@ -20,7 +20,7 @@ export const head: DocumentHead = {
   meta: [
     {
       name: "description",
-      content: "Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more.",
+      content: "Practical digital security, one step at a time. A free, open checklist covering authentication, browsing, devices, networks, AI and more.",
     },
   ],
 };

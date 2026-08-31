@@ -44,7 +44,7 @@ const html = `<!DOCTYPE html>
   <main>
     <p class="code">404</p>
     <h1>Page not found</h1>
-    <p>That checklist doesn't exist — it may have been renamed or moved.</p>
+    <p>That checklist doesn't exist. It may have been renamed or moved.</p>
     <a href="${BASE}">Back to the checklists</a>
   </main>
 </body>
@@ -52,7 +52,7 @@ const html = `<!DOCTYPE html>
 `;
 
 if (!existsSync(distDir)) {
-  console.error(`[write-404] ${distDir} does not exist — run the static build first.`);
+  console.error(`[write-404] ${distDir} does not exist. Run the static build first.`);
   process.exit(1);
 }
 

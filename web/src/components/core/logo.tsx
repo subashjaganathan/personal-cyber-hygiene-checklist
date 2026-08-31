@@ -9,7 +9,7 @@ interface LogoProps {
 
 /**
  * The Cyber Hygiene mark: a hex shield with a heartbeat line running through
- * it — the shield reads as security, the pulse as something you check on
+ * it: the shield reads as security, the pulse as something you check on
  * regularly rather than set once and forget.
  *
  * Drawn inline rather than loaded as an image so it inherits the page's
