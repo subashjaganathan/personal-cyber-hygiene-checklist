@@ -60,7 +60,7 @@ Security advice goes stale, and links rot. If you spot something out of date, in
 
 ## Licence
 
-The application code is licensed under the [MIT License](./LICENSE). The checklist content is published under [Creative Commons Attribution 4.0](./LICENSE-CONTENT.md).
+The application code is licensed under the [MIT License](./LICENSE).
 
 ---
 
