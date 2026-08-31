@@ -1,34 +1,26 @@
-import { component$, useContext } from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import { type DocumentHead } from "@builder.io/qwik-city";
 
 import Hero from "~/components/furniture/hero";
 import SectionLinkGrid from "~/components/psc/section-link-grid";
 import Progress from "~/components/psc/progress";
 
-import { ChecklistContext } from '~/store/checklist-context';
-
-import { useChecklist } from '~/store/local-checklist-store';
-
-export default component$(() => { 
-  const checklists = useContext(ChecklistContext);
-
-  const localChecklist = useChecklist();
-
+export default component$(() => {
   return (
     <>
       <Hero />
       <Progress />
-      <SectionLinkGrid sections={localChecklist.checklist.checklist || checklists.value} />
+      <SectionLinkGrid />
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Cyber Hygiene · Personal Security & Privacy Checklist",
+  title: "Cyber Hygiene · Practical Digital Security",
   meta: [
     {
       name: "description",
-      content: "A practical, interactive checklist for securing your digital life and protecting your privacy.",
+      content: "Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more.",
     },
   ],
 };

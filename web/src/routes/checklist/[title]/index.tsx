@@ -1,11 +1,12 @@
 import { component$, useContext } from '@builder.io/qwik';
-import { useLocation, type StaticGenerateHandler } from '@builder.io/qwik-city';
-import { marked } from 'marked';
+import { useLocation, type DocumentHead, type StaticGenerateHandler } from '@builder.io/qwik-city';
 
 import Icon from '~/components/core/icon';
 import { ChecklistContext } from '~/store/checklist-context';
+import { parseMarkdown } from '~/utils/checklist';
 import type { Section } from "~/types/PSC";
 import Table from '~/components/psc/checklist-table';
+import { useChecklists } from '~/routes/layout';
 
 export default component$(() => {
 
@@ -17,10 +18,6 @@ export default component$(() => {
   const section: Section | undefined = (checklists.value)
     .find((item: Section) => item.slug === slug);
 
-  const parseMarkdown = (text: string | undefined): string => {
-    return marked.parse(text || '', { async: false }) as string || '';
-  };
-  
   return (
     <div class="md:my-8 md:px-16 sm:px-2 rounded-md">
     <article class="bg-back p-8 mx-auto w-full max-w-[1200px] rounded-lg shadow-md">
@@ -52,6 +49,27 @@ export default component$(() => {
     </div>
   );
 });
+
+/*
+ * Each section gets its own title, description and canonical URL. Without this
+ * all section pages inherited the same generic head and competed with one
+ * another in search results.
+ */
+export const head: DocumentHead = ({ resolveValue, params }) => {
+  const sections = resolveValue(useChecklists);
+  const section = sections.find((item: Section) => item.slug === params.title);
+  return {
+    title: `${section?.title || 'Checklist'} · Cyber Hygiene`,
+    meta: [
+      {
+        name: 'description',
+        content: section?.description || 'A digital security and privacy checklist.',
+      },
+      { property: 'og:title', content: `${section?.title || 'Checklist'} · Cyber Hygiene` },
+      { property: 'og:description', content: section?.description || '' },
+    ],
+  };
+};
 
 // Enumerate every checklist section slug so each page is pre-rendered at build time
 export const onStaticGenerate: StaticGenerateHandler = async () => {

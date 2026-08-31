@@ -3,10 +3,23 @@ import { useCSSTransition } from "qwik-transition";
 
 import Icon from "~/components/core/icon";
 import type { Priority, Section, Checklist } from '../../types/PSC';
-import { marked } from "marked";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
+import { generatePointId, parseMarkdown } from "~/utils/checklist";
 import styles from './psc.module.css';
 
+
+/*
+ * Kept at module scope so it is serializable: resetFilters runs inside a $()
+ * closure, which can capture a plain object but not a factory function.
+ */
+const DEFAULT_FILTERS = {
+  show: 'all', // 'all', 'remaining', 'completed'
+  levels: {
+    essential: true,
+    optional: true,
+    advanced: true,
+  },
+};
 
 export default component$((props: { section: Section }) => {
 
@@ -20,16 +33,13 @@ export default component$((props: { section: Section }) => {
 
   const checklist = useSignal<Checklist[]>(props.section.checklist);
 
-  const originalFilters = {
-    show: 'all', // 'all', 'remaining', 'completed'
-    levels: {
-      essential: true,
-      optional: true,
-      advanced: true,
-    },
-  };
+  const originalFilters = { ...DEFAULT_FILTERS, levels: { ...DEFAULT_FILTERS.levels } };
 
-  const filterState = useStore(originalFilters);
+  // A fresh copy, so mutating the filters never rewrites the defaults
+  const filterState = useStore(
+    { ...DEFAULT_FILTERS, levels: { ...DEFAULT_FILTERS.levels } },
+    { deep: true },
+  );
 
   const getBadgeClass = (priority: Priority, precedeClass: string = '') => {
     switch (priority.toLocaleLowerCase()) {
@@ -44,13 +54,7 @@ export default component$((props: { section: Section }) => {
     }
   };
 
-  const generateId = (title: string) => {
-    return title.toLowerCase().replace(/ /g, '-');
-  };
-
-  const parseMarkdown = (text: string | undefined): string => {
-    return marked.parse(text || '', { async: false }) as string || '';
-  };
+  const generateId = (title: string) => generatePointId(props.section.slug, title);
 
   const isIgnored = (pointId: string) => {
     return ignored.value[pointId] || false;
@@ -72,8 +76,10 @@ export default component$((props: { section: Section }) => {
     if (filterState.show === 'remaining' && (itemCompleted || itemIgnored)) return false;
     if (filterState.show === 'completed' && !itemCompleted) return false;
 
-    // Filter by level
-    return filterState.levels[itemLevel.toLocaleLowerCase() as Priority];
+    // Filter by level. An unrecognised priority shows the row rather than
+    // silently hiding an item the user can then never tick off.
+    const levels: Record<string, boolean | undefined> = filterState.levels;
+    return levels[itemLevel.toLocaleLowerCase()] ?? true;
   });
 
   const sortChecklist = (a: Checklist, b: Checklist) => {
@@ -117,8 +123,8 @@ export default component$((props: { section: Section }) => {
     checklist.value = props.section.checklist;
     sortState.column = '';
     sortState.ascending = true;
-    filterState.levels = originalFilters.levels;
-    filterState.show = originalFilters.show;
+    filterState.levels = { ...DEFAULT_FILTERS.levels };
+    filterState.show = DEFAULT_FILTERS.show;
   });
 
   const calculateProgress = (): { done: number, total: number, percent: number, disabled: number} => {
@@ -138,7 +144,7 @@ export default component$((props: { section: Section }) => {
       }
     });
 
-    const percent = Math.round((done / total) * 100);
+    const percent = total > 0 ? Math.round((done / total) * 100) : 0;
     return { done, total: props.section.checklist.length, percent, disabled };
   };
 
@@ -195,7 +201,7 @@ export default component$((props: { section: Section }) => {
         <div class="flex justify-end items-center gap-1">
           <p class="font-bold text-sm">Filter</p>
           <label class="p-2 rounded hover:bg-front transition-all cursor-pointer flex gap-2">
-            <span class="text-sm">Basic</span> 
+            <span class="text-sm">Essential</span> 
             <input
               type="checkbox"
               checked={filterState.levels.essential}
@@ -226,7 +232,7 @@ export default component$((props: { section: Section }) => {
       </div>
     )}
 
-    <table class="table">
+    <table class={`table ${styles.checklistTable}`}>
       <thead>
         <tr>
           { [

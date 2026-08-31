@@ -20,12 +20,57 @@ export default component$(() => {
     'fantasy', 'dracula'
   ];
 
-    const deleteAllData = $(() => {
+  /*
+   * Every key this app owns. Deleting these individually rather than calling
+   * localStorage.clear() matters: the site is served from a GitHub Pages user
+   * domain, so its storage is shared with every other project hosted there,
+   * and clear() would wipe all of them.
+   */
+  const STORAGE_KEYS = ['PSC_PROGRESS', 'PSC_IGNORED', 'PSC_CLOSE_WELCOME', 'PSC_THEME', 'PSC_SCHEMA_VERSION'];
+
+  const deleteAllData = $(() => {
     const isConfirmed = confirm('Are you sure you want to delete all local data? This will erase your progress.');
     if (isConfirmed) {
-      localStorage.clear();
+      STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
       location.reload();
     }
+  });
+
+  /** Downloads saved progress as JSON, so it can be backed up or moved browsers. */
+  const exportData = $(() => {
+    const payload: Record<string, unknown> = { exportedAt: new Date().toISOString(), version: 2 };
+    STORAGE_KEYS.forEach((key) => {
+      const value = localStorage.getItem(key);
+      if (value !== null) payload[key] = JSON.parse(value);
+    });
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `cyber-hygiene-progress-${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+  });
+
+  /** Restores progress from a previously exported JSON file. */
+  const importData = $((event: Event) => {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+    file.text().then((text) => {
+      try {
+        const payload = JSON.parse(text);
+        const restored = STORAGE_KEYS.filter((key) => key in payload);
+        if (!restored.length) {
+          alert('That file does not contain any Cyber Hygiene progress.');
+          return;
+        }
+        restored.forEach((key) => localStorage.setItem(key, JSON.stringify(payload[key])));
+        location.reload();
+      } catch {
+        alert('Could not read that file — is it a Cyber Hygiene export?');
+      }
+    });
   });
 
   return (
@@ -119,12 +164,24 @@ export default component$(() => {
             </ul>
           </li>
           <li>
+            <button
+              class="w-full"
+              onClick$={() => {
+                // Close the drawer first, or the modal opens behind it
+                const drawer = document.getElementById('my-drawer-3') as HTMLInputElement | null;
+                if (drawer) drawer.checked = false;
+                ((document.getElementById('settings_modal') || {}) as HTMLDialogElement).showModal();
+              }}>
+              <Icon class="mr-2" icon="settings" width={16} height={16} />Settings
+            </button>
+          </li>
+          <li>
             <a href={withBase("/about")}>
               <Icon class="mr-2" icon="about" width={16} height={16} />About
             </a>
             <ul>
               <li>
-                <a href="https://github.com/subashjaganathan/security-checklist#contributing">Contributing</a>
+                <a href="https://github.com/subashjaganathan/security-checklist/blob/main/CONTRIBUTING.md">Contributing</a>
               </li>
               <li>
                 <a href="https://github.com/subashjaganathan/security-checklist/blob/main/LICENSE">License</a>
@@ -164,8 +221,22 @@ export default component$(() => {
                 </select>
               </div>
               <div class="flex items-between w-full justify-between">
+                <label class="label">Backup</label>
+                <div class="flex gap-2">
+                  <button class="btn btn-sm" onClick$={exportData}>Export</button>
+                  <label class="btn btn-sm" for="import-progress">Import</label>
+                  <input
+                    id="import-progress"
+                    type="file"
+                    accept="application/json,.json"
+                    class="hidden"
+                    onChange$={importData}
+                  />
+                </div>
+              </div>
+              <div class="flex items-between w-full justify-between">
                 <label class="label">Data</label>
-                <button class="btn btn-primary" onClick$={deleteAllData}>Delete All</button>
+                <button class="btn btn-error btn-sm" onClick$={deleteAllData}>Delete All</button>
               </div>
               <button
                 class="btn my-1 mx-auto"

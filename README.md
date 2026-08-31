@@ -1,45 +1,61 @@
-# Cyber Hygiene — Personal Security & Privacy Checklist
+# Cyber Hygiene
 
-A comprehensive, interactive checklist to help you secure your digital life — covering authentication, web browsing, email, messaging, networks, devices, AI & privacy, and more.
+**Practical digital security, one step at a time.**
 
-🔗 **Live site:** https://subashjaganathan.github.io/security-checklist/
+🔗 https://subashjaganathan.github.io/security-checklist/
 
-Curated and maintained by **Subash Jaganathan**.
+Most security advice is either too vague to act on ("use strong passwords") or written for people who already work in the field. This is an attempt at something in between: 278 specific, plain-English things you can actually do, sorted into 15 areas, with each one marked Essential, Optional or Advanced so you can tell what's worth your time.
 
-Built with [Qwik](https://qwik.dev), rendered as a static site and hosted on GitHub Pages. All the checklist content is driven by [`personal-security-checklist.yml`](./personal-security-checklist.yml).
+You tick items off as you go. Your progress is saved in your browser and nowhere else — there's no account, no backend, and no analytics. If you clear your browser data it's gone, which is why there's an export button in the settings.
 
-## Development
+## Start here
 
-The web app lives in the [`web/`](./web) directory.
+Nobody should do all 278. The [Getting Started](https://subashjaganathan.github.io/security-checklist/checklist/getting-started/) section is six questions that help you work out which of the rest actually apply to you — what you're protecting, and who from. Ten minutes there will save you a lot of wasted effort later.
+
+If you only ever do four things: use a password manager with a unique password everywhere, put phishing-resistant 2FA on your email, turn on automatic updates, and tighten your account recovery options. Those four block the overwhelming majority of real-world compromises.
+
+## What's covered
+
+Getting Started · Authentication · Web Browsing · Email · Messaging · Social Media · Networks · Mobile Devices · Personal Computers · Backup & Recovery · Smart Home · Personal Finance · Human Aspect · Physical Security · AI & Privacy
+
+## A note on the advice
+
+Security guidance ages badly, and a lot of what circulates online is years out of date. Things like hiding your Wi-Fi SSID, filtering by MAC address, or rotating your passwords every 90 days are still repeated constantly, and all three are either useless or actively counterproductive — NIST has recommended against scheduled password rotation since 2017.
+
+So the content here gets pruned as well as extended. Advice that no longer holds up is removed rather than left in place, and where the honest answer is "this is more complicated than it looks" — cryptocurrency privacy, fingerprint spoofing — it says so instead of pretending otherwise.
+
+If you spot something that's wrong or stale, please open an issue. That's genuinely the most useful contribution.
+
+## Running it locally
+
+The checklist content lives in [`personal-security-checklist.yml`](./personal-security-checklist.yml) at the repo root. The web app reads it at build time, so adding or editing advice needs no code changes.
 
 ```bash
 cd web
-npm install --legacy-peer-deps   # install dependencies
-npm start                        # run the dev server
+npm install --legacy-peer-deps
+npm start
 ```
 
-## Building the static site
+To build the static site as it's deployed:
 
 ```bash
 cd web
 npm run build.pages
 ```
 
-This builds the client assets, generates static HTML for every route (SSG), and
-rewrites asset paths for the `/security-checklist/` base path. The output is
-written to `web/dist/`, which is what gets deployed to GitHub Pages.
+That builds the client assets, pre-renders every route, and writes a branded `404.html`. Output lands in `web/dist/security-checklist/`.
 
-> **Note on the base path:** the site is served from a sub-path
-> (`/security-checklist/`), so `web/vite.config.mts` sets `base` accordingly and
-> `web/scripts/rebase-paths.mjs` fixes the asset URLs that Qwik 1.4 emits at the
-> root. If you fork this to a different repo name, update the base path in both
-> `vite.config.mts` and the `build.pages` script.
+> **On the base path:** the site is served from a sub-path (`/security-checklist/`), so `web/vite.config.mts` sets Vite's `base`, and internal links go through the `withBase()` helper in `web/src/utils/base.ts`. Forking this under a different repo name means updating the base path in `vite.config.mts`, `web/public/manifest.json`, `web/scripts/write-404.mjs`, and the artifact path in the deploy workflow.
 
-## Deployment
+## Contributing
 
-Pushing to `main` triggers the [`Deploy to GitHub Pages`](./.github/workflows/deploy.yml) workflow, which builds the static site and publishes it. Make sure **Settings → Pages → Source** is set to **GitHub Actions**.
+[CONTRIBUTING.md](./CONTRIBUTING.md) covers how the YAML is structured, the rules the app relies on (valid priority values, unique slugs, which colours and icons exist), and what to run before opening a pull request.
 
-## Credits & License
+## Built with
+
+[Qwik](https://qwik.dev) and Tailwind, rendered as a fully static site and hosted on GitHub Pages. Fonts are self-hosted rather than pulled from Google — it seemed hypocritical to leak every visitor's IP to a third party from a privacy checklist. Pushing to `main` triggers the [deploy workflow](./.github/workflows/deploy.yml); Settings → Pages → Source needs to be set to **GitHub Actions**.
+
+## Credits & licence
 
 Curated and maintained by **Subash Jaganathan**.
 

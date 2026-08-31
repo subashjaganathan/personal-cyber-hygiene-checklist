@@ -1,11 +1,195 @@
-
 .container {
   /* I couldn't figure out how to do this with Tailwind.... */
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
-.checklistItemDescription {
-  a {
-    text-decoration: underline;
+.checklistItemDescription a {
+  text-decoration: underline;
+}
+
+/*
+ * Column proportions. Without these the browser gave the Advice column only as
+ * much width as it strictly needed, wrapping short titles over four or five
+ * lines while the Details column had room to spare.
+ */
+.checklistTable {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.checklistTable th:nth-child(1),
+.checklistTable td:nth-child(1) { width: 5.5rem; }
+
+.checklistTable th:nth-child(2),
+.checklistTable td:nth-child(2) { width: 26%; }
+
+.checklistTable th:nth-child(3),
+.checklistTable td:nth-child(3) { width: 7rem; }
+
+.checklistTable td:nth-child(2) { overflow-wrap: break-word; }
+
+/*
+ * Below md the table is unusable on a phone: the fixed columns pushed the
+ * Details cell entirely off-screen behind a horizontal scrollbar, so the actual
+ * advice could not be read at all. Each row becomes a self-contained card.
+ */
+@media (max-width: 767px) {
+  .checklistTable,
+  .checklistTable tbody,
+  .checklistTable tr,
+  .checklistTable td {
+    display: block;
+    width: auto;
   }
+
+  .checklistTable thead {
+    display: none;
+  }
+
+  .checklistTable tr {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "check title"
+      "check level"
+      "details details";
+    gap: 0.35rem 0.9rem;
+    align-items: start;
+    padding: 1rem;
+    margin-bottom: 0.9rem;
+    border: 1px solid hsl(var(--bc, 0 0% 50%) / 0.15);
+    border-radius: 0.75rem;
+  }
+
+  .checklistTable td { padding: 0; }
+  .checklistTable td:nth-child(1) { grid-area: check; }
+  .checklistTable td:nth-child(2) { grid-area: title; width: auto; }
+  .checklistTable td:nth-child(3) { grid-area: level; }
+  .checklistTable td:nth-child(4) {
+    grid-area: details;
+    padding-top: 0.6rem;
+    border-top: 1px solid hsl(var(--bc, 0 0% 50%) / 0.12);
+    margin-top: 0.5rem;
+  }
+}
+
+/*
+ * Section cards on the homepage. Each card borrows its accent from the
+ * section's own colour, so the grid reads as a set of distinct areas rather
+ * than fifteen identical tiles.
+ */
+.card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  overflow: hidden;
+  padding: 1.25rem;
+  border-radius: 1.1rem;
+  border: 1px solid;
+  border-color: hsl(var(--bc) / 0.12) !important;
+  background: hsl(var(--b1));
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 34px -20px hsl(var(--bc) / 0.55);
+}
+
+/* Soft corner wash, tinted by the section colour */
+.cardGlow {
+  position: absolute;
+  top: -3.5rem;
+  right: -3.5rem;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 9999px;
+  filter: blur(42px);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.card:hover .cardGlow {
+  opacity: 0.38;
+}
+
+.iconChip {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 0.9rem;
+  background-color: currentColor;
+  background-blend-mode: normal;
+  opacity: 0.95;
+}
+
+/* Tint the chip rather than filling it with a solid block of colour */
+.iconChip {
+  background-image: linear-gradient(140deg, hsl(var(--b1) / 0.75), hsl(var(--b1) / 0.9));
+  box-shadow: inset 0 0 0 1px hsl(var(--bc) / 0.1);
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.cardDescription {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  opacity: 0.75;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.track {
+  height: 0.3rem;
+  margin-top: 0.85rem;
+  border-radius: 9999px;
+  background: hsl(var(--bc) / 0.1);
+  overflow: hidden;
+}
+
+.trackFill {
+  display: block;
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+}
+
+.percent {
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover,
+  .trackFill {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Shared panel treatment, so the progress widgets sit with the section cards */
+.panel {
+  border-radius: 1.1rem;
+  border: 1px solid hsl(var(--bc) / 0.12);
+  background: hsl(var(--b1));
+  box-shadow: 0 12px 28px -22px hsl(var(--bc) / 0.6);
 }

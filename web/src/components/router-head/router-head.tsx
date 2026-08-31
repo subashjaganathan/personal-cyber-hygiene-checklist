@@ -9,9 +9,19 @@ export const RouterHead = component$(() => {
 
   return (
     <>
+      {/* Self-hosted fonts. Declared here rather than in global.css so the
+          URLs can be resolved against the app's base path. */}
+      <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href={withBase("/fonts/poppins-400.woff2")} />
+      <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href={withBase("/fonts/poppins-700.woff2")} />
+      <style dangerouslySetInnerHTML={`
+        @font-face { font-family: 'Poppins'; font-style: normal; font-weight: 400; font-display: swap; src: url('${withBase("/fonts/poppins-400.woff2")}') format('woff2'); }
+        @font-face { font-family: 'Poppins'; font-style: normal; font-weight: 500; font-display: swap; src: url('${withBase("/fonts/poppins-500.woff2")}') format('woff2'); }
+        @font-face { font-family: 'Poppins'; font-style: normal; font-weight: 700; font-display: swap; src: url('${withBase("/fonts/poppins-700.woff2")}') format('woff2'); }
+      `} />
+
       {/* Basics */}
-      <title>{head.title || 'Cyber Hygiene · Personal Security & Privacy Checklist'}</title>
-      <meta name="description" content="Cyber Hygiene — a practical, interactive checklist to secure your digital life and protect your privacy." />
+      <title>{head.title || 'Cyber Hygiene · Practical Digital Security'}</title>
+      <meta name="description" content="Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more." />
 
       {/* Site config */}
       <link rel="canonical" href={loc.url.href} />
@@ -24,15 +34,15 @@ export const RouterHead = component$(() => {
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={loc.url.href} />
-      <meta property="og:title" content="Cyber Hygiene · Personal Security & Privacy Checklist" />
-      <meta property="og:description" content="A practical, interactive checklist to secure your digital life and protect your privacy." />
+      <meta property="og:title" content="Cyber Hygiene · Practical Digital Security" />
+      <meta property="og:description" content="Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more." />
       <meta property="og:image" content={withBase("/banner.png")} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={loc.url.href} />
-      <meta property="twitter:title" content="Cyber Hygiene · Personal Security & Privacy Checklist" />
-      <meta name="twitter:description" content="A practical, interactive checklist to secure your digital life and protect your privacy." />
+      <meta property="twitter:title" content="Cyber Hygiene · Practical Digital Security" />
+      <meta name="twitter:description" content="Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more." />
       <meta name="twitter:image" content={withBase("/banner.png")} />
 
       {head.meta.map((m) => (

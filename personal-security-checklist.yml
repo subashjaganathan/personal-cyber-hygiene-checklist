@@ -1,3 +1,70 @@
+- title: Getting Started
+  slug: getting-started
+  description: Working out which of the other 272 items actually apply to you
+  icon: compass
+  color: sky
+  intro: >-
+    This checklist is long on purpose - it covers everyone from someone who just wants fewer spam calls to
+    someone with a genuine reason to fear a well-resourced adversary. Almost nobody should do all of it.
+    Before working through the sections, spend ten minutes deciding what you are protecting and from whom.
+    That single decision is what turns a list of 272 suggestions into a plan you can finish.
+  checklist:
+  - point: Decide What You're Actually Protecting
+    priority: Essential
+    details: >-
+      Security advice only makes sense once you know what it is defending. Write down the handful of things
+      that would genuinely hurt to lose: access to your email, your photos, your money, your home address,
+      your medical history, a conversation staying private. Most people find the list is shorter than they
+      expected, and that a few accounts - email above all - hold the keys to everything else. Those are where
+      your effort belongs.
+
+  - point: Decide Who You're Protecting It From
+    priority: Essential
+    details: >-
+      The defences that stop an opportunistic criminal are not the ones that stop an abusive ex-partner, and
+      neither is what stops a government. Be specific: automated attacks and credential stuffing affect
+      everyone; targeted attention from someone who knows you is a different problem, and often needs physical
+      and human measures more than technical ones; a state adversary changes almost every answer in this
+      checklist. The EFF's [Surveillance Self-Defense](https://ssd.eff.org) walks through this properly, and is
+      worth reading before you change any settings.
+
+  - point: Start With What Blocks the Most Common Attacks
+    priority: Essential
+    details: >-
+      Almost all real-world account compromise comes down to a handful of causes: a reused password exposed in
+      someone else's breach, a phishing page, an unpatched device, or a phone number used as a recovery method.
+      If you do nothing else, do these four - a password manager with unique passwords everywhere,
+      phishing-resistant 2FA on your email and financial accounts, automatic updates turned on, and your
+      account recovery options tightened. Everything marked Essential in the sections that follow is chosen on
+      the same basis.
+
+  - point: Prefer Changes You Will Actually Keep
+    priority: Essential
+    details: >-
+      A measure you abandon in a fortnight offers no protection, and the effort spent on it is gone. Security
+      that fights you every day gets worked around - the password policy that produces sticky notes, the
+      encrypted messenger nobody you know will install, the VPN switched off because streaming broke. Choose
+      the strongest option you can live with indefinitely rather than the strongest option that exists, and
+      raise the bar later, once the current setup has become habit.
+
+  - point: Accept That Nothing Is Perfectly Secure
+    priority: Optional
+    details: >-
+      The goal is not invulnerability; it is being a harder target than the attacker's next option, and
+      limiting the damage when something does get through. This is why the later sections put as much weight
+      on backups, compartmentalisation and recovery as on prevention. Treating a breach as something that may
+      eventually happen, and planning for it, is more realistic and more useful than trying to make one
+      impossible.
+
+  - point: Revisit This Periodically
+    priority: Optional
+    details: >-
+      Your accounts, devices and circumstances change, and so do the defaults of every service you use - a
+      privacy setting you chose two years ago may have been reset, renamed, or quietly given a new meaning by
+      a terms update. Put a recurring reminder in your calendar, once or twice a year, to walk back through
+      the sections you have completed. Your progress is saved in this browser, so you can see what you did
+      last time.
+
 - title: Authentication
   slug: authentication
   description: Securing your online account login credentials
@@ -5,7 +72,7 @@
   color: yellow
   intro: >-
     Most reported data breaches are caused by the use of weak, default, or stolen passwords
-    (according to [this Verizon report](http://www.verizonenterprise.com/resources/reports/rp_dbir-2016-executive-summary_xg_en.pdf)).
+    (year after year, the [Verizon Data Breach Investigations Report](https://www.verizon.com/business/resources/reports/dbir/) finds stolen credentials among the leading causes).
     Use long, strong, and unique passwords, manage them in a secure password manager, enable
     2-factor authentication, keep on top of breaches, and take care while logging into your accounts.
   checklist:
@@ -36,8 +103,8 @@
       All your passwords will be encrypted against 1 master password (which you must remember, and it should be
       very strong). Most password managers have browser extensions and mobile apps, so whatever device you are on,
       your passwords can be auto-filled. A good all-rounder is
-      Bitwarden, or see
-      Recommended Password Managers.
+      [Bitwarden](https://bitwarden.com) — open source, audited, and free for personal use.
+      [KeePassXC](https://keepassxc.org) and [1Password](https://1password.com) are also solid choices.
 
   - point: Avoid Sharing Passwords
     priority: Essential
@@ -86,14 +153,15 @@
       that no one can see over your shoulder. Cover your password or pin code while you type, and do not
       reveal any plain text passwords on your screen.
 
-  - point: Update Critical Passwords Periodically
-    priority: Optional
+  - point: Change Passwords After a Breach, Not on a Schedule
+    priority: Essential
     details: >-
-      Database leaks and breaches are common, and, likely, several of your passwords are already somewhere
-      online. Occasionally updating passwords of security-critical accounts can help mitigate this. But providing
-      that all your passwords are long, strong, and unique, there is no need to do this too often — annually should be
-      sufficient. Enforcing mandatory password changes within organisations is [no longer recommended](https://duo.com/decipher/microsoft-will-no-longer-recommend-forcing-periodic-password-changes),
-      as it encourages colleagues to select weaker passwords.
+      Rotating passwords on a calendar is [no longer recommended](https://pages.nist.gov/800-63-4/sp800-63b.html):
+      NIST SP 800-63B tells verifiers not to require periodic changes, because people respond by picking weaker
+      passwords and making predictable tweaks (Password1 becomes Password2). What matters is changing a password
+      *when there is a reason to* — when a service discloses a breach, when your monitoring service flags the
+      credential, or when you suspect a device was compromised. Provided every password is long, strong and unique,
+      an unbreached password does not get weaker with age.
 
   - point: Don’t Save your Password in Browsers
     priority: Optional
@@ -176,7 +244,7 @@
       [NitroKey](https://www.nitrokey.com) are examples of such keys. They bring with them several security benefits.
       Since the browser communicates directly with the device, it cannot be fooled as to which host is requesting
   - point: Use Passkeys Where Available
-    priority: Recommended
+    priority: Essential
     details: >-
       Passkeys (also known as FIDO2 WebAuthn) are a passwordless authentication method that is more secure
       and convenient than traditional passwords. They use your devices biometric authentication (fingerprint, face ID)
@@ -186,6 +254,23 @@
       authentication because the TLS certificate is checked. [This post](https://security.stackexchange.com/a/71704) is
       a good explanation of the security of using FIDO U2F tokens. Of course, it is important to store the physical key
       somewhere safe or keep it on your person. Some online accounts allow for several methods of 2FA to be enabled.
+
+  - point: Register a Second Passkey Before You Need It
+    priority: Essential
+    details: >-
+      A passkey lives on a device. Lose that device with only one passkey registered and you are relying on the
+      service's account-recovery process, which is usually the weakest part of its security. Register at least two
+      — for example one on your phone and one on a hardware security key — or use a passkey manager that syncs
+      across your devices. Keep the account's backup codes too, until you are confident the passkeys work.
+
+  - point: Don't Remove the Password Until the Passkey Works
+    priority: Optional
+    details: >-
+      Some services let you delete your password once a passkey is registered, which genuinely removes the
+      phishing risk that comes with a password. Do it only after you have signed in with the passkey from every
+      device you use, and confirmed you can recover the account without it. Passkey implementations still vary in
+      quality between platforms and browsers, and a half-working one plus no password is how people lock
+      themselves out.
 
   - point: Consider Offline Password Manager
     priority: Advanced
@@ -249,7 +334,7 @@
       load faster, uses less data and provides a less cluttered experience.
 
   - point: Ensure Website is Legitimate
-    priority: Basic
+    priority: Essential
     details: >-
       It may sound obvious, but when you logging into any online accounts, double check the URL is correct.
       Storing commonly visited sites in your bookmarks is a good way to ensure the URL is easy to find. When
@@ -260,7 +345,7 @@
       if you are unsure.
 
   - point: Watch out for Browser Malware
-    priority: Basic
+    priority: Essential
     details: >-
       Your system or browser can be compromised by spyware, miners, browser hijackers, malicious redirects,
       adware etc. You can usually stay protected, just by: ignoring pop-ups, be wary of what your clicking,
@@ -311,18 +396,6 @@
       and patched, so it’s important to keep it up to date, to avoid a zero-day exploit. You can [see which browser
       version you're using here](https://www.whatismybrowser.com/), or follow [this guide](https://www.whatismybrowser.com/guides/how-to-update-your-browser/)
       for instructions on how to update. Some browsers will auto-update to the latest stable version.
-
-  - point: Check for HTTPS
-    priority: Essential
-    details: >-
-      If you enter information on a non-HTTPS website, this data is transported unencrypted and can therefore
-      be read by anyone who intercepts it. Do not enter any data on a non-HTTPS website, but also do not let
-      the green padlock give you a false sense of security, just because a website has SSL certificate, does
-      not mean that it is legitimate or trustworthy. [HTTPS-Everywhere](https://www.eff.org/https-everywhere)
-      (developed by the [EFF](https://www.eff.org/)) used to be a browser extension/addon that automatically
-      enabled HTTPS on websites, but as of 2022 is now deprecated. In their [accouncement article](https://www.eff.org/)
-      the EFF explains that most browsers now integrate such protections. Additionally, it provides instructions
-      for Firefox, Chrome, Edge and Safari browsers on how to enable their HTTPS secure protections.
 
   - point: Use DNS-over-HTTPS
     priority: Essential
@@ -462,37 +535,22 @@
       just pure CSS. You can stay protected,
       with the CSS Exfil Protection plugin.
 
-  - point: Deactivate ActiveX
-    priority: Optional
-    details: >-
-      ActiveX is a browser extension API that built into Microsoft IE, and enabled by default. It's not commonly
-      used anymore, but since it gives plugins intimate access rights, and can be dangerous, therefore you should
-      disable it.
-
   - point: Disable WebRTC
     priority: Optional
     details: >-
       WebRTC allows high-quality audio/video communication and peer-to-peer file-sharing straight from the
       browser. However it can pose as a privacy leak. To learn more, check out this guide.
 
-  - point: Spoof HTML5 Canvas Sig
+  - point: Resist Fingerprinting with the Right Browser, Not Add-ons
     priority: Optional
     details: >-
-      Canvas Fingerprinting allows websites to identify and track users very accurately. You can use the
-      Canvas-Fingerprint-Blocker extension to spoof your fingerprint or
-      use Tor.
-
-  - point: Spoof User Agent
-    priority: Optional
-    details: >-
-      The user agent tells the website what device, browser and version you are using. Switching user agent
-      periodically is one small step you can take to become less unique.
-
-  - point: Disregard DNT
-    priority: Optional
-    details: >-
-      Enabling Do Not Track has very limited impact, since many websites do not respect or follow this. Since
-      it is rarely used, it may also add to your signature, making you more unique.
+      Canvas fingerprinting and similar techniques identify you without cookies, by measuring how your specific
+      hardware and software render content. The instinct is to install an extension that spoofs these values, but
+      that usually backfires: a browser reporting an inconsistent or rare combination stands out *more*, and the
+      extension itself becomes part of your fingerprint. Effective defences are built into the browser, where they
+      apply consistently — the [Tor Browser](https://www.torproject.org) makes users look alike, and
+      [Brave](https://brave.com) and Firefox's `resistFingerprinting` mode randomise or block the signals at
+      source. Test what you actually look like with the EFF's [Cover Your Tracks](https://coveryourtracks.eff.org).
 
   - point: Prevent HSTS Tracking
     priority: Optional
@@ -999,11 +1057,15 @@
       After getting a new router, change the password. Default router passwords are publicly available,
       meaning anyone within proximity would be able to connect.
 
-  - point: Use WPA2, and a strong password
+  - point: Use WPA3 (or WPA2) with a Strong Passphrase
     priority: Essential
     details: >-
-      There are different authentication protocols for connecting to WiFi. Currently, the most secure options
-      are WPA2 and WPA3 (on newer routers).
+      Choose WPA3 if your router and devices support it — it fixes the offline-dictionary weakness in WPA2's
+      handshake, so an attacker who captures your traffic can no longer take the passphrase away and grind at it.
+      If some older devices can't connect, WPA3/WPA2 mixed mode is a reasonable compromise; plain WPA2 is the
+      floor. Never use WEP or WPA, both of which are trivially broken. Whichever you pick, the passphrase does the
+      real work: make it long and random, since it is the only thing standing between an attacker in range and
+      your network.
 
   - point: Keep router firmware up-to-date
     priority: Essential
@@ -1041,12 +1103,6 @@
       Typically they’re manufactured cheaply in bulk in China, with insecure propriety firmware that doesn't
       receive regular security updates.
 
-  - point: Whitelist MAC Addresses
-    priority: Optional
-    details: >-
-      You can whitelist MAC addresses in your router settings, disallowing any unknown devices to immediately
-      connect to your network, even if they know your credentials.
-
   - point: Change the Router’s Local IP Address
     priority: Optional
     details: >-
@@ -1065,12 +1121,6 @@
       WiFi SSIDs are scanned, logged, and then published on various websites, which is a serious privacy
       concern for some.
 
-  - point: Hide your SSID
-    priority: Optional
-    details: >-
-      Your router's Service Set Identifier is simply the network name. If it is not visible, it may receive
-      less abuse.
-
   - point: Disable WPS
     priority: Optional
     details: >-
@@ -1088,12 +1138,6 @@
     details: >-
       Do not grant access to your primary WiFi network to visitors, as it enables them to interact with other
       devices on the network.
-
-  - point: Change your Router's Default IP
-    priority: Optional
-    details: >-
-      Modifying your router admin panel's default IP address will make it more difficult for malicious scripts
-      targeting local IP addresses.
 
   - point: Kill unused processes and services on your router
     priority: Optional
@@ -1235,6 +1279,17 @@
       SIM hijacking is when a hacker is able to get your mobile number transferred to their sim. The easiest way
       to protect against this is to set up a PIN through your mobile provider.
 
+  - point: Protect Against SIM Swapping
+    priority: Essential
+    details: >-
+      In a SIM swap, an attacker persuades your carrier to move your number to their SIM — often with nothing more
+      than publicly available personal details — and then collects every SMS code and phone-based password reset
+      you have. Set a port-out PIN or account passcode with your carrier and ask them to flag the account as
+      requiring in-person or additional verification for any transfer. Then reduce what the number is worth:
+      move 2FA off SMS onto an authenticator app or security key, and remove your phone number as a recovery
+      method wherever the account offers a better one. A sudden unexplained loss of signal is the classic warning
+      sign — treat it as urgent, not as a network glitch.
+
   - point: Opt-out of Caller ID Listings
     priority: Optional
     details: >-
@@ -1295,12 +1350,6 @@
     details: >-
       Restarting your phone at least once a week will clear the app state cached in memory and may run more smoothly
       after a restart.
-
-  - point: Avoid SMS
-    priority: Optional
-    details: >-
-      SMS should not be used to receive 2FA codes or for communication, instead use an encrypted messaging app,
-      such as Signal.
 
   - point: Keep your Number Private
     priority: Optional
@@ -1437,12 +1486,6 @@
       Use a screen privacy filter in public spaces to prevent shoulder surfing and protect sensitive
       information.
 
-  - point: Physically Secure Device
-    priority: Optional
-    details: >-
-      Use a Kensington Lock to secure your laptop in public spaces and consider port locks to prevent
-      unauthorized physical access.
-
   - point: Don't Charge Devices from your PC
     priority: Optional
     details: >-
@@ -1477,11 +1520,15 @@
       Lock your PC when away and consider using USBGuard or similar tools to protect against keystroke
       injection attacks.
 
-  - point: Don't use commercial "Free" Anti-Virus
-    priority: Optional
+  - point: Use Built-in Anti-Virus, Not a Third-Party Suite
+    priority: Essential
     details: >-
-      Rely on built-in security tools and avoid free anti-virus applications due to their potential for
-      privacy invasion and data collection.
+      On Windows, Microsoft Defender is built in, updated with the system, and now scores alongside paid products
+      in independent [AV-TEST](https://www.av-test.org) evaluations — for most people it is the right choice, and
+      no third-party suite is needed. macOS and most Linux distributions likewise need no add-on scanner. Free
+      consumer anti-virus products are worth actively avoiding: several have been caught harvesting and selling
+      browsing data, and they typically install deep system hooks and root certificates that widen your attack
+      surface rather than narrowing it.
 
   - point: Periodically check for Rootkits
     priority: Advanced
@@ -1565,6 +1612,123 @@
     url: https://www.privacyguides.org
   - title: File Encryption
     url: https://www.privacyguides.org
+
+- title: Backup & Recovery
+  slug: backup-recovery
+  description: Getting your data and your accounts back when something goes wrong
+  icon: backup
+  color: orange
+  intro: >-
+    Every other section in this checklist tries to stop bad things happening. This one assumes something
+    eventually will - a failed drive, a stolen laptop, ransomware, or simply losing the phone that holds your
+    second factor. The difference between an inconvenience and a catastrophe is almost always whether a
+    working backup and a usable recovery path existed beforehand. Both have to be set up while everything is
+    still fine.
+  checklist:
+  - point: Follow the 3-2-1 Rule
+    priority: Essential
+    details: >-
+      Keep **three** copies of anything you care about, on **two** different kinds of media, with **one** of
+      them off-site. The reasoning is that backup failures are usually correlated: the same flood, theft,
+      power surge, ransomware or mistaken deletion that takes the original often takes a backup sitting next
+      to it. An external drive at home plus an encrypted cloud copy satisfies this for most people, and is far
+      more robust than either on its own.
+
+  - point: Keep One Backup Offline
+    priority: Essential
+    details: >-
+      Ransomware deliberately looks for backups, and anything permanently mounted or continuously synced is
+      reachable by whatever is running on your machine. Keep at least one copy physically disconnected between
+      backups, or use a service offering immutable or versioned storage that the client cannot retroactively
+      delete. Sync services like Dropbox or iCloud are not backups on their own - they faithfully replicate
+      deletions and encryption to every device.
+
+  - point: Encrypt Your Backups
+    priority: Essential
+    details: >-
+      A backup is a complete copy of your data with none of your device's protections around it. Encrypt it
+      before it leaves your control: most backup software offers this directly, and
+      [Cryptomator](https://cryptomator.org) or [VeraCrypt](https://veracrypt.fr) can encrypt what a provider
+      does not. Store the backup passphrase somewhere separate from the backup itself - losing it makes the
+      backup as useless as not having one.
+
+  - point: Test That You Can Actually Restore
+    priority: Essential
+    details: >-
+      This is the step nearly everyone skips, and the reason most backup strategies fail at exactly the wrong
+      moment. A backup job reporting success proves only that files were written - not that they can be read
+      back, not that the encryption passphrase still works, and not that the set is complete. Once or twice a
+      year, restore a handful of files to a different machine and open them. Far better to find the problem
+      now.
+
+  - point: Automate It
+    priority: Essential
+    details: >-
+      A backup that depends on remembering to run it will be weeks out of date when you need it. Schedule it,
+      and check the job's own reporting occasionally, so that a silent failure doesn't go unnoticed for
+      months.
+
+  - point: Harden Your Account Recovery Options
+    priority: Essential
+    details: >-
+      Recovery is the back door to every account, and it is routinely weaker than the front. A password
+      manager and a hardware key protect nothing if the account will also let anyone holding your phone
+      number, or knowing your mother's maiden name, reset it. Audit the recovery methods on your important
+      accounts: remove SMS where a better option exists, make sure the recovery email is itself an account
+      secured to the same standard, and treat security questions as extra passwords - store random answers in
+      your password manager rather than facts a data broker sells.
+
+  - point: Store Recovery Codes Where You Can Reach Them
+    priority: Essential
+    details: >-
+      Backup codes solve exactly one problem: losing your second factor. That makes storing them only inside
+      the account they unlock, or only on the phone that is the second factor, self-defeating. Print them and
+      keep them somewhere physically secure, or store them in a password manager you can reach from another
+      device. Whichever you choose, confirm you could get to them from a borrowed computer with nothing of
+      your own to hand - because that is the situation you will be in.
+
+  - point: Keep an Offline Record of Critical Accounts
+    priority: Optional
+    details: >-
+      If your password manager, phone and laptop were all unavailable at once, could you list the accounts
+      that matter and how to reach their support? A short written record - which email address each critical
+      account uses, which are tied to which phone number, which have backup codes and where they are - kept in
+      a safe or with someone you trust turns a total lockout into a slow afternoon. It does not need to
+      contain any passwords to be useful.
+
+  - point: Plan for Emergency and Long-Term Access
+    priority: Optional
+    details: >-
+      Security done well means nobody can get into your accounts, including the people who may need to if you
+      are seriously ill or die. Most password managers offer an emergency-access feature that grants a chosen
+      contact entry after a waiting period you can cancel, and Apple, Google and Microsoft all provide legacy
+      or inactive-account mechanisms. Set one up, and tell the person concerned that it exists. Deciding this
+      deliberately is far better than either leaving your family locked out or leaving your master password in
+      a drawer.
+
+  - point: Know What to Do If You Are Breached
+    priority: Essential
+    details: >-
+      Decide the order of operations before you need it, because the first hour matters and panic is a poor
+      guide. Broadly: get onto a device you trust; change the password on your email account first, since it
+      controls the resets for everything else; then revoke active sessions and application tokens rather than
+      only changing passwords, because a stolen session cookie survives a password change. Work outwards to
+      financial and social accounts, check for recovery addresses or mail-forwarding rules the attacker may
+      have added, and contact your bank directly if money is involved. Only then worry about how it happened.
+
+  softwareLinks:
+  - title: Cryptomator
+    url: https://cryptomator.org
+    description: Client-side encryption for files kept with any cloud provider
+  - title: VeraCrypt
+    url: https://veracrypt.fr
+    description: Encrypted volumes for local and removable drives
+  - title: Restic
+    url: https://restic.net
+    description: Encrypted, deduplicating, versioned backups to many storage backends
+  - title: Have I Been Pwned
+    url: https://haveibeenpwned.com
+    description: Check whether your accounts appear in known breaches
 
 - title: Smart Home
   slug: smart-home
@@ -1704,12 +1868,15 @@
     details: >-
       Pay with Cash for local and everyday purchases to avoid financial profiling by institutions.
 
-  - point: Use Cryptocurrency for Online Transactions
+  - point: Understand What Cryptocurrency Does and Doesn't Hide
     priority: Optional
     details: >-
-      Opt for privacy-focused cryptocurrencies like
-      Monero for
-      online transactions to maintain anonymity. Use cryptocurrencies wisely to ensure privacy.
+      Bitcoin is not anonymous. Its ledger is public and permanent, and chain-analysis firms routinely link
+      addresses back to people, so a payment made today can be de-anonymised years later. Privacy-focused coins
+      such as [Monero](https://www.getmonero.org) conceal amounts and participants by default, but they have been
+      delisted from most major exchanges, which makes acquiring and converting them harder. Treat crypto as a tool
+      with specific, limited privacy properties rather than as a general-purpose way to stay private — for most
+      everyday purchases, a virtual card is both more private and more practical.
 
   - point: Store Crypto Securely
     priority: Advanced
@@ -1720,17 +1887,24 @@
       consider long-term storage solutions like
       CryptoSteel.
 
-  - point: Buy Crypto Anonymously
+  - point: Know the Rules Before Buying Crypto Privately
     priority: Advanced
     details: >-
-      Purchase cryptocurrencies without linking to your identity through services
-      like LocalBitcoins,
-      Bisq, or Bitcoin ATMs.
+      Peer-to-peer exchanges such as [Bisq](https://bisq.network) and cash-based methods avoid handing your
+      identity to a centralised exchange. Be aware that many jurisdictions now apply know-your-customer and
+      money-transmission rules to these routes, and that deliberately structuring purchases to avoid reporting
+      thresholds is itself an offence in some countries. Check what applies where you live before using them —
+      this is a legal question as much as a privacy one.
 
-  - point: Tumble/ Mix Coins
+  - point: Treat Coin Mixers as a Legal Risk, Not a Privacy Tool
     priority: Advanced
     details: >-
-      Use a bitcoin mixer or CoinJoin before converting Bitcoin to currency to obscure transaction trails.
+      Mixers and tumblers break the link between addresses, but using them now carries serious consequences that
+      have nothing to do with your technical privacy. Several major mixers have been sanctioned or prosecuted, and
+      exchanges routinely freeze funds with mixer history in their chain of custody — meaning coins can arrive
+      tainted and unusable through no fault of yours. Unless you have a specific, well-understood reason and have
+      checked the law where you live, this is one to leave alone. If your goal is simply private everyday payments,
+      virtual cards and cash serve you better at a fraction of the risk.
 
   - point: Use an Alias Details for Online Shopping
     priority: Advanced
@@ -1796,11 +1970,6 @@
     details: >-
       Be cautious of phishing attempts. Verify URLs, context of received messages, and employ good security practices like using 2FA and not reusing passwords.
 
-  - point: Watch out for Stalkerware
-    priority: Essential
-    details: >-
-      Be aware of stalkerware installed by acquaintances for spying. Look out for signs like unusual battery usage and perform factory resets if suspected.
-
   - point: Install Reputable Software from Trusted Sources
     priority: Essential
     details: >-
@@ -1822,16 +1991,6 @@
     details: >-
       HTTPS does not guarantee a website's legitimacy. Verify URLs and exercise caution with personal data.
 
-  - point: Use Virtual Cards when paying online
-    priority: Optional
-    details: >-
-      Use virtual cards for online payments to protect your banking details and limit transaction risks.
-
-  - point: Review application permissions
-    priority: Optional
-    details: >-
-      Regularly review and manage app permissions to ensure no unnecessary access to sensitive device features.
-
   - point: Opt-out of public lists
     priority: Optional
     details: >-
@@ -1847,15 +2006,24 @@
     details: >-
       Many apps and services default to data sharing settings. Opt out to protect your data from being shared with third parties.
 
-  - point: Review and update social media privacy
+  - point: Remove Yourself from Data Broker Sites
     priority: Optional
     details: >-
-      Regularly check and update your social media settings due to frequent terms updates that may affect your privacy settings.
+      Data brokers compile and sell dossiers — addresses, relatives, phone numbers, employment — assembled from
+      public records and purchased datasets. These profiles are what social engineers and stalkers use, and they
+      are what makes answering "security questions" honestly so dangerous. Most brokers are legally obliged to
+      honour deletion requests, and several jurisdictions (the EU under GDPR, California under CCPA/CPRA, and a
+      growing list of US states) give you an enforceable right to demand it. Work through the major brokers one by
+      one, or use a removal service if the volume is unmanageable. Expect to repeat this: profiles are commonly
+      rebuilt within a year.
 
-  - point: Compartmentalize
+  - point: Compartmentalize Your Identities
     priority: Advanced
     details: >-
-      Keep different areas of digital activity separate to limit data exposure in case of a breach.
+      Keep different areas of your life on separate identities — separate email addresses, usernames and
+      payment methods for banking, shopping, work and social accounts. If one is breached or linked back
+      to you, the others aren't. This is the human counterpart to isolating programs and data on your
+      computer.
 
   - point: WhoIs Privacy Guard
     priority: Advanced
@@ -1971,6 +2139,33 @@
   - point: Protect your DNA
     priority: Advanced
     details: Avoid sharing DNA with heritage websites and be cautious about leaving DNA traces.
+
+  - point: Prepare Devices Before Crossing a Border
+    priority: Optional
+    details: >-
+      Border officers in many countries can search electronic devices without a warrant or individual suspicion,
+      and in some can compel you to unlock them or deny entry if you refuse. Decide in advance what you are willing
+      to carry: travel with a clean device holding only what you need, sign out of accounts you do not need en
+      route, and pull the data you do need from the cloud after you arrive. Power devices fully off before the
+      crossing — encryption keys are held in memory while a device is merely locked, and biometric unlocks are far
+      easier to compel than a passphrase in most legal systems.
+
+  - point: Take Extra Care on Public and Hotel Networks
+    priority: Essential
+    details: >-
+      Treat any network you don't control as hostile. Modern HTTPS protects the contents of most traffic, so the
+      old advice about coffee-shop Wi-Fi is overstated, but a hostile network still sees which sites you visit and
+      can serve convincing captive-portal pages that ask for credentials. Use your phone's hotspot in preference
+      to open Wi-Fi where you can, be sceptical of any login page a network presents to you, and never install a
+      certificate or profile a network asks you to add.
+
+  - point: Beware Public Charging Points
+    priority: Optional
+    details: >-
+      A charging port can carry data as well as power. The practical risk is lower than the headlines suggest —
+      modern phones ask permission before trusting a connected computer — but the defence costs nothing: carry
+      your own charger and plug into a wall socket, or use a USB data blocker or charge-only cable when you must
+      use a public port. A battery pack removes the question entirely.
 
   color: lime
 

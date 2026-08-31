@@ -6,6 +6,8 @@ import { ChecklistContext } from "~/store/checklist-context";
 import type { Priority, Sections, Section } from '~/types/PSC';
 import Icon from '~/components/core/icon';
 import { withBase } from '~/utils/base';
+import styles from './psc.module.css';
+import { generatePointId } from '~/utils/checklist';
 
 /**
  * Component for client-side user progress metrics.
@@ -45,7 +47,7 @@ export default component$(() => {
     let totalComplete = 0;
     sections.forEach((section: Section) => {
       section.checklist.forEach((item) => {
-        const id = item.point.toLowerCase().replace(/ /g, '-');
+        const id = generatePointId(section.slug, item.point);
         const isComplete = checkedItems.value[id];
         const isIgnored = ignoredItems.value[id];
         if (isComplete) {
@@ -135,7 +137,7 @@ export default component$(() => {
       calculateProgress(sections)
         .then((progress) => {
           const { completed, outOf } = progress;
-          const percent = Math.round((completed / outOf) * 100)
+          const percent = outOf > 0 ? Math.round((completed / outOf) * 100) : 0;
           drawProgress(percent, `#${priority}-container`, color)
         })
     });
@@ -164,7 +166,7 @@ export default component$(() => {
   useOnWindow('load', $(async () => {
     sectionCompletion.value = await Promise.all(checklists.value.map(section => {
       return calculateProgress([section]).then(
-        (progress) => Math.round(progress.completed / progress.outOf * 100)
+        (progress) => progress.outOf > 0 ? Math.round(progress.completed / progress.outOf * 100) : 0
       );
     }));
   }));
@@ -300,8 +302,8 @@ export default component$(() => {
 
     <div class="flex justify-center flex-col items-center gap-6">
       {/* Progress Percent */}
-      <div class="rounded-box bg-front shadow-md w-96 p-4">
-        <h3 class="text-primary text-2xl">Your Progress</h3>
+      <div class={[styles.panel, "w-96 p-5"]}>
+        <h3 class="text-primary text-2xl font-bold">Your Progress</h3>
         <p class="text-lg">
           You've completed <b>{totalProgress.value.completed} out of {totalProgress.value.outOf}</b> items
         </p>
@@ -317,8 +319,7 @@ export default component$(() => {
       {items.map((item) => (
         <div
           key={item.id}
-          class="flex flex-col justify-items-center carousel-item w-20 p-4
-                bg-front shadow-md mx-2.5 rounded-box">
+          class={[styles.panel, "flex flex-col justify-items-center carousel-item w-20 p-4 mx-2.5"]}>
           <div class="relative" id={item.id}></div>
           <p class="text-center">{item.label}</p>
         </div>
@@ -327,13 +328,13 @@ export default component$(() => {
     </div>
 
     {/* Radar Chart showing total progress per category and level */}
-    <div class="rounded-box bg-front shadow-md w-96 p-4">
+    <div class={[styles.panel, "w-96 p-5"]}>
       <canvas ref={radarChart} id="myChart"></canvas>
     </div>
 
     <div class="justify-center flex-col items-center gap-6 hidden xl:flex">
       {/* Remaining Tasks */}
-      <div class="p-4 rounded-box bg-front shadow-md w-96 flex-grow">
+      <div class={[styles.panel, "p-5 w-96 flex-grow"]}>
         <ul>
           { checklists.value.map((section: Section, index: number) => (
               <li key={index}>

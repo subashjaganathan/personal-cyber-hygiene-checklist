@@ -1,0 +1,151 @@
+/*
+ * Hero styling. Everything here is driven by the daisyUI theme variables
+ * (--p primary, --s secondary, --a accent, --b1/--b2 base, --bc content), so it
+ * stays legible across all 14 themes and in both light and dark rather than
+ * hardcoding one palette.
+ */
+
+.hero {
+  background:
+    radial-gradient(120% 120% at 50% -20%, hsl(var(--p) / 0.28) 0%, transparent 60%),
+    linear-gradient(160deg, hsl(var(--b2)) 0%, hsl(var(--b1)) 100%);
+  border: 1px solid hsl(var(--bc) / 0.08);
+  isolation: isolate;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  color: hsl(var(--bc) / 0.07);
+  z-index: -2;
+  mask-image: radial-gradient(80% 70% at 50% 30%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(80% 70% at 50% 30%, #000 40%, transparent 100%);
+}
+
+/* Two blurred colour washes that give the panel depth */
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glowOne {
+  width: 26rem;
+  height: 26rem;
+  top: -9rem;
+  left: -6rem;
+  background: hsl(var(--s) / 0.55);
+}
+
+.glowTwo {
+  width: 24rem;
+  height: 24rem;
+  bottom: -11rem;
+  right: -5rem;
+  background: hsl(var(--a) / 0.5);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  background: hsl(var(--bc) / 0.06);
+  border: 1px solid hsl(var(--bc) / 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.pulse {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: hsl(var(--su, 158 64% 52%));
+  box-shadow: 0 0 0 0 hsl(var(--su, 158 64% 52%) / 0.7);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  70% { box-shadow: 0 0 0 0.6rem hsl(var(--su, 158 64% 52%) / 0); }
+  100% { box-shadow: 0 0 0 0 hsl(var(--su, 158 64% 52%) / 0); }
+}
+
+.title {
+  background-image: linear-gradient(
+    100deg,
+    hsl(var(--p)) 0%,
+    hsl(var(--s)) 45%,
+    hsl(var(--a)) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shift 9s ease-in-out infinite;
+}
+
+@keyframes shift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+.cta {
+  background-image: linear-gradient(100deg, hsl(var(--p)), hsl(var(--s)));
+  box-shadow: 0 10px 30px -10px hsl(var(--p) / 0.7);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px -10px hsl(var(--p) / 0.8);
+}
+
+.ctaGhost {
+  background: hsl(var(--b1) / 0.6);
+  border: 1px solid hsl(var(--bc) / 0.2);
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ctaGhost:hover {
+  transform: translateY(-2px);
+  border-color: hsl(var(--p) / 0.6);
+  background: hsl(var(--b1) / 0.8);
+}
+
+.stat {
+  flex: 1 1 7rem;
+  max-width: 11rem;
+  padding: 1rem 0.75rem;
+  border-radius: 1rem;
+  background: hsl(var(--b1) / 0.55);
+  border: 1px solid hsl(var(--bc) / 0.1);
+  backdrop-filter: blur(6px);
+}
+
+.statValue {
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1;
+  background-image: linear-gradient(100deg, hsl(var(--p)), hsl(var(--a)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Respect a reduced-motion preference: keep the colour, drop the movement */
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .pulse {
+    animation: none;
+  }
+  .cta:hover,
+  .ctaGhost:hover {
+    transform: none;
+  }
+}

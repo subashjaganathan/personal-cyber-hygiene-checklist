@@ -2,14 +2,10 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 import Icon from "~/components/core/icon";
+import { parseMarkdown } from "~/utils/checklist";
 import { socials, intro, contributing, maintainer } from './about-content';
-import { marked } from "marked";
 
 export default component$(() => {
-
-  const parseMarkdown = (text: string | undefined): string => {
-    return marked.parse(text || '', { async: false }) as string || '';
-  };
 
   return (
     <div class="m-4 md:mx-16">

@@ -1,12 +1,22 @@
-import { $, component$, useOnWindow, useSignal } from "@builder.io/qwik";
+import { $, component$, useContext, useOnWindow, useSignal } from "@builder.io/qwik";
 
 import { useLocalStorage } from "~/hooks/useLocalStorage";
+import { ChecklistContext } from '~/store/checklist-context';
 import type { Checklist, Section } from '~/types/PSC';
 import Icon from '~/components/core/icon';
 import { withBase } from '~/utils/base';
+import { generatePointId } from '~/utils/checklist';
 import styles from './psc.module.css';
 
-export default component$((props: { sections: Section[] }) => {
+export default component$(() => {
+
+  /*
+   * Read the sections from context rather than taking them as a prop. The
+   * array used to be passed in and then captured by the load handler below,
+   * where Qwik resumed it as a signal rather than an array, throwing
+   * "sections.map is not a function" on every visit to the homepage.
+   */
+  const checklists = useContext(ChecklistContext);
 
   // Create signals to store the number of items done or ignored per section
   const completions =  useSignal<number[]>();
@@ -21,72 +31,78 @@ export default component$((props: { sections: Section[] }) => {
    * using completion data from local storage, and disregarding ignored items
    */
   const getPercentCompletion = $((section: Section): number => {
-    const id = (item: Checklist) => item.point.toLowerCase().replace(/ /g, '-')
+    const id = (item: Checklist) => generatePointId(section.slug, item.point);
     const total = section.checklist.filter((item) => !ignored.value[id(item)]).length;
     const done = section.checklist.filter((item) => checked.value[id(item)]).length;
-    return Math.round((done / total) * 100);
+    return total > 0 ? Math.round((done / total) * 100) : 0;
   });
 
   // On load (in browser only), calculate and set completion data for sections
   useOnWindow('load', $(async () => {
     // Percentage completion, per section
-    completions.value = await Promise.all(props.sections.map(section => 
+    completions.value = await Promise.all(checklists.value.map((section: Section) =>
       getPercentCompletion(section),
     ));
     // Count of completed items, per section
-    done.value = await Promise.all(props.sections.map(section => 
+    done.value = checklists.value.map((section: Section) =>
       section.checklist.filter(
-        (item) => checked.value[item.point.toLowerCase().replace(/ /g, '-')],
+        (item) => checked.value[generatePointId(section.slug, item.point)],
       ).length
-    ));
+    );
   }));
 
   return (
     <div class={[styles.container, 'grid',
-      'mx-auto mt-8 px-4 gap-7', 'xl:px-10 xl:max-w-7xl',
-      'transition-all', 'max-w-6xl w-full']}>
-      {props.sections.map((section: Section, index: number) => (                   
+      'mx-auto mt-8 px-4 gap-6', 'xl:px-10 xl:max-w-7xl',
+      'max-w-6xl w-full']}>
+      {checklists.value.map((section: Section, index: number) => {
+        const percent = completions.value?.[index];
+        const doneCount = done.value?.[index];
+        return (
         <a key={section.slug}
           href={withBase(`/checklist/${section.slug}`)}
-          class={[
-            'card card-side bg-front bg-opacity-25 shadow-md transition-all px-2',
-            `outline-offset-2 outline-${section.color}-400`,
-            'hover:outline hover:outline-10 hover:outline-offset-4 hover:bg-opacity-15',
-            `hover:bg-${section.color}-600`
-          ]}
+          class={[styles.card, `border-${section.color}-400`]}
         >
-          <div class="flex-shrink-0 flex flex-col py-4 h-auto items-stretch justify-evenly">
-            <Icon icon={section.icon || 'star'} color={section.color} />
-            {(done.value && done.value[index]) ? (
-              <p class={`text-${section.color}-400 pt-2 pb-0 px-0 mx-0 my-0`}>
-                {done.value[index]}/{section.checklist.length} Done
-              </p>
-            ) : (
-              <p class={`text-${section.color}-400 pt-2 pb-0 px-0 mx-0 my-0`}>
-                {section.checklist.length} Items
-              </p>
-            )}
+          {/* Colour wash keyed to the section, so each area reads distinctly */}
+          <span class={[styles.cardGlow, `bg-${section.color}-400`]} aria-hidden="true"></span>
+
+          <div class={[styles.iconChip, `bg-${section.color}-400`]}>
+            <Icon icon={section.icon || 'star'} color={section.color} width={26} height={26} />
           </div>
-          <div class="card-body flex-grow py-2 pl-4 pr-0">
-            <h2 class={`card-title text-${section.color}-400 hover:text-${section.color}-500`}>
+
+          <div class="flex-grow min-w-0">
+            <h2 class={[styles.cardTitle, `text-${section.color}-400`]}>
               {section.title}
             </h2>
-            <p class="p-0">{section.description}</p>
-            {(completions.value && completions.value[index]) ? (
-              <div
-                class={['radial-progress absolute right-2 top-2 scale-75', `text-${section.color}-400`]}
-                style={`--value:${completions.value[index]}; --size: 2.5rem;`}
-                role="progressbar">
-                  <span class="text-xs">{completions.value[index]}%</span>
-              </div>
-            ) : (
-              <span class="absolute right-2 top-2 opacity-30 text-xs">
-                Not yet started
+            <p class={styles.cardDescription}>{section.description}</p>
+
+            <div class="flex items-center gap-2 mt-3">
+              <span class={[styles.pill, `text-${section.color}-400`, `border-${section.color}-400`]}>
+                {section.checklist.length} checks
               </span>
-            )}
+              {doneCount ? (
+                <span class="text-xs opacity-70">{doneCount} done</span>
+              ) : (
+                <span class="text-xs opacity-40">Not yet started</span>
+              )}
+            </div>
+
+            {/* Completion bar, only once there is progress to show */}
+            {percent ? (
+              <div class={styles.track}>
+                <span
+                  class={[styles.trackFill, `bg-${section.color}-400`]}
+                  style={`width: ${percent}%;`}></span>
+              </div>
+            ) : null}
           </div>
+
+          {percent ? (
+            <span class={[styles.percent, `text-${section.color}-400`]}>{percent}%</span>
+          ) : null}
         </a>
-      ))}
+        );
+      })}
     </div>
   );
 });
