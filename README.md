@@ -58,6 +58,10 @@ Getting Started · Authentication · Web Browsing · Email · Messaging · Socia
 
 Security advice goes stale, and links rot. If you spot something out of date, incorrect, or missing, please open an issue. That's genuinely the most useful thing you can contribute.
 
+## Licence
+
+The application code is licensed under the [MIT License](./LICENSE). The checklist content is published under [Creative Commons Attribution 4.0](./LICENSE-CONTENT.md).
+
 ---
 
 Written and maintained by **Subash Jaganathan**, DFIR Expert.
