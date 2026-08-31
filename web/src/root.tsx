@@ -5,6 +5,7 @@ import {
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
+import { withBase } from "./utils/base";
 
 import tailwind from './styles/tailwind.css?inline';
 
@@ -24,7 +25,7 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href={withBase("/manifest.json")} />
         <RouterHead />
         <ServiceWorkerRegister />
       </head>

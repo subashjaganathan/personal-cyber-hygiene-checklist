@@ -6,7 +6,7 @@
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.server": "vite build -c adapters/vercel-edge/vite.config.mts",
     "build.static": "vite build -c adapters/static/vite.config.mts",
-    "build.pages": "vite build && vite build -c adapters/static/vite.config.mts && node scripts/rebase-paths.mjs /security-checklist",
+    "build.pages": "vite build && vite build -c adapters/static/vite.config.mts",
     "build.types": "tsc --incremental --noEmit",
     "deploy": "vercel deploy",
     "dev": "vite --mode ssr",

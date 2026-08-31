@@ -24,11 +24,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Digital Defense",
+  title: "Aegis · Personal Security & Privacy Checklist",
   meta: [
     {
       name: "description",
-      content: "The ultimate personal security checklist, for securing your digital life.",
+      content: "A practical, interactive checklist for securing your digital life and protecting your privacy.",
     },
   ],
 };

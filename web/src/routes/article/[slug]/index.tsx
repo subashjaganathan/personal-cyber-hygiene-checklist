@@ -120,7 +120,7 @@ export const onStaticGenerate: StaticGenerateHandler = async () => {
 };
 
 export const head: DocumentHead = {
-  title: "Article | Digital Defense",
+  title: "Article | Aegis",
   meta: [
     {
       name: "description",

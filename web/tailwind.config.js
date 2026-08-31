@@ -21,8 +21,25 @@ module.exports = {
   },
   daisyui: {
     themes: [
-      { light: applyCustomColors("light", "237 9% 86% / 0.75", "237 9% 86% / 1") },
-      { dark: applyCustomColors("dark", "217 14% 17%", "212 14% 10%") },
+      {
+        light: {
+          ...applyCustomColors("light", "237 9% 86% / 0.75", "237 9% 86% / 1"),
+          primary: "#7c3aed",
+          secondary: "#db2777",
+          accent: "#0891b2",
+        },
+      },
+      {
+        dark: {
+          ...applyCustomColors("dark", "217 14% 17%", "212 14% 10%"),
+          primary: "#8b5cf6",
+          "primary-content": "#ffffff",
+          secondary: "#ec4899",
+          "secondary-content": "#ffffff",
+          accent: "#22d3ee",
+          "accent-content": "#053345",
+        },
+      },
       { night: applyCustomColors("night", "220deg 44.68% 9.22%", "219.2, 38.2%, 13.3%") },
 
       { cupcake: applyCustomColors("cupcake", "297deg 77% 90%", "303.33deg 60% 94.12%") },

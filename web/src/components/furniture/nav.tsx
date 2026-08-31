@@ -41,7 +41,7 @@ export default component$(() => {
           </div> 
           <a href={withBase("/")} class="btn btn-ghost text-xl flex capitalize">
             <label for="my-drawer-3" aria-label="open sidebar" class="tooltip tooltip-bottom" data-tip="View all Pages"><Icon class="mr-2" icon="shield" width={28} height={28}  /></label>
-            <h1>Digital Defense</h1>
+            <h1 class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent font-extrabold">Aegis</h1>
           </a>
         </div>
         <div class="flex-none hidden md:flex">
@@ -65,7 +65,7 @@ export default component$(() => {
               </details>
             </li>
             <li>
-              <a href="https://github.com/lissy93/personal-security-checklist"
+              <a href="https://github.com/subashjaganathan/security-checklist"
                 class="tooltip flex tooltip-bottom" data-tip="View / Edit Source & Data">
                 <Icon icon="github" width={16} height={16}  />GitHub
               </a>
@@ -100,10 +100,10 @@ export default component$(() => {
         <ul class="rounded-box menu p-4 w-80 min-h-full bg-base-200">
           <h2 class="flex text-primary">
           <Icon class="mr-2" icon="shield" width={16} height={16}  />
-            Digital Defense
+            Aegis
           </h2>
           <li><a href={withBase("/")}><Icon class="mr-2" icon="homepage" width={16} height={16}  />Home</a></li>
-          <li><a href="https://github.com/lissy93/personal-security-checklist">
+          <li><a href="https://github.com/subashjaganathan/security-checklist">
             <Icon class="mr-2" icon="github" width={16} height={16}  />GitHub</a>
           </li>
           <li>
@@ -137,29 +137,14 @@ export default component$(() => {
             </a>
             <ul>
               <li>
-                <a href="https://github.com/Lissy93/personal-security-checklist/?tab=readme-ov-file#contributing">Contributing</a>
+                <a href="https://github.com/subashjaganathan/security-checklist#contributing">Contributing</a>
               </li>
               <li>
-                <a href="https://github.com/Lissy93/personal-security-checklist/blob/master/LICENSE">License</a>
+                <a href="https://github.com/subashjaganathan/security-checklist/blob/main/LICENSE">License</a>
               </li>
-            </ul>
-            <ul>
-            <li>
-              <a href={withBase("/about#author")}>Author</a>
-              <ul>
-                <li><a href="https://aliciasykes.com/contact">Contact</a></li>
-                <li>
-                  <a href="https://apps.aliciasykes.com">More Apps</a>
-                </li>
-                <li class="flex flex-row">
-                  <a href="https://github.com/lissy93"><Icon icon="hub" width={16} height={16} /></a>
-                  <a href="https://x.com/lissy_sykes"><Icon icon="twitter" width={16} height={16} /></a>
-                  <a href="https://mastodon.social/@lissy93"><Icon icon="mastodon" width={16} height={16} /></a>
-                  <a href="https://dev.to/lissy93"><Icon icon="dev" width={16} height={16} /></a>
-                  <a href="https://linkedin.com/in/aliciasykes"><Icon icon="linkedin" width={16} height={16} /></a>
-                </li>
-              </ul>
-            </li>
+              <li>
+                <a href={withBase("/about#author")}>Credits</a>
+              </li>
             </ul>
           </li>
         </ul>

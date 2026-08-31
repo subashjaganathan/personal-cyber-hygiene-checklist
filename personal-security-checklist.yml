@@ -1973,3 +1973,70 @@
     details: Avoid sharing DNA with heritage websites and be cautious about leaving DNA traces.
 
   color: lime
+
+- title: AI & Privacy
+  slug: ai-privacy
+  description: Protecting your data and privacy in the age of AI assistants
+  icon: ai
+  color: violet
+  intro: >-
+    AI assistants, chatbots, and generative tools are now part of everyday life — but everything you type
+    into them can be logged, used to train future models, and reviewed by humans. This section covers how to
+    use AI tools without handing over your private data, how to spot AI-powered scams, and how to keep
+    control of your digital identity as deepfakes and voice cloning become mainstream.
+  checklist:
+  - point: Never Share Secrets with AI Chatbots
+    priority: Essential
+    details: >-
+      Treat anything you type into a public AI assistant (ChatGPT, Gemini, Copilot, etc.) as potentially
+      permanent and readable by others. Do not paste passwords, API keys, financial details, health records,
+      or confidential work data. Many providers retain conversations and may use them to train future models,
+      and support staff can sometimes review flagged chats.
+  - point: Turn Off Model Training on Your Data
+    priority: Essential
+    details: >-
+      Most major AI providers let you opt out of having your conversations used for training — look in the
+      privacy or data-controls settings and disable it. Where available, enable "temporary" or "incognito"
+      chat modes for anything sensitive, and periodically clear your chat history.
+  - point: Be Sceptical of AI-Generated Messages
+    priority: Essential
+    details: >-
+      Phishing emails, texts, and voicemails are now written by AI, making them grammatically perfect and
+      highly convincing. Never trust urgency or authority in a message alone — verify unexpected requests
+      through a separate, known channel before clicking links or transferring money.
+  - point: Verify Voice and Video (Deepfakes)
+    priority: Essential
+    details: >-
+      Voice cloning needs only a few seconds of audio, and video deepfakes are increasingly realistic.
+      Agree on a private "safe word" with close family and colleagues to confirm identity during unexpected
+      phone or video requests, especially any involving money or credentials.
+  - point: Review AI App Permissions
+    priority: Optional
+    details: >-
+      AI features baked into your phone, browser, and office apps often request broad access to your emails,
+      files, screen, and microphone. Grant only what each tool genuinely needs, and disable AI features that
+      continuously read your screen or record activity if you don't use them.
+  - point: Prefer Local or Private AI Models
+    priority: Optional
+    details: >-
+      For sensitive tasks, use AI that runs entirely on your own device (such as local models via Ollama or
+      LM Studio) so your prompts never leave your machine. If you must use a cloud service, prefer providers
+      with a clear zero-retention or enterprise privacy policy.
+  - point: Limit Your Public Voice and Photo Footprint
+    priority: Advanced
+    details: >-
+      The less audio and video of you exists publicly, the harder you are to clone. Consider making old
+      videos and voice notes private, and be mindful of what you post publicly on social media that could be
+      scraped to build a synthetic version of you.
+  - point: Watch for Data Scraping and Opt Out
+    priority: Advanced
+    details: >-
+      Your public posts, images, and writing may be scraped to train AI models. Where regulations allow
+      (e.g. GDPR), submit opt-out or data-removal requests, and use platforms that block AI crawlers or let
+      you tag content as "do not train".
+  - point: Don't Blindly Trust AI Output
+    priority: Advanced
+    details: >-
+      AI tools confidently produce wrong answers ("hallucinations") and can be manipulated by attackers.
+      Independently verify security, legal, medical, or financial advice from an AI before acting on it, and
+      never run code or commands suggested by an AI without understanding what they do.
