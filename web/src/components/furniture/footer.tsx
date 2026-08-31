@@ -14,12 +14,6 @@ export default component$(() => {
         <span class="opacity-70"> · DFIR Expert</span> —
         View source on <a href={ghLink} class="link link-primary">GitHub</a>
       </p>
-      <p class="text-xs opacity-50">
-        Checklist content adapted in part from{' '}
-        <a href="https://github.com/lissy93/personal-security-checklist" class="link">Personal Security Checklist</a>{' '}
-        by Alicia Sykes, under{' '}
-        <a href="https://creativecommons.org/licenses/by/4.0/" class="link">CC BY 4.0</a>.
-      </p>
     </aside>
   </footer>
   );

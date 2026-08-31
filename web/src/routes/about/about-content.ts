@@ -37,12 +37,3 @@ export const socials = [
     link: 'https://github.com/subashjaganathan',
   },
 ];
-
-// Attribution required by the CC BY 4.0 licence of the original checklist content.
-export const attribution = {
-  originalTitle: 'Personal Security Checklist',
-  originalAuthor: 'Alicia Sykes',
-  originalRepo: 'https://github.com/lissy93/personal-security-checklist',
-  licenseName: 'CC BY 4.0',
-  licenseLink: 'https://creativecommons.org/licenses/by/4.0/',
-};

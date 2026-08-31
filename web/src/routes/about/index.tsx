@@ -4,7 +4,7 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import Icon from "~/components/core/icon";
 import { parseMarkdown } from "~/utils/checklist";
 import styles from "./about.module.css";
-import { socials, intro, contributing, maintainer, attribution } from './about-content';
+import { socials, intro, contributing, maintainer } from './about-content';
 
 export default component$(() => {
 
@@ -59,14 +59,8 @@ export default component$(() => {
         </div>
 
         <p class="text-xs opacity-60 mt-8 pt-4 border-t border-base-content/10">
-          Cyber Hygiene is written and maintained by {maintainer.name}. Parts of the checklist content are
-          adapted from{' '}
-          <a href={attribution.originalRepo} class="link" target="_blank" rel="noopener noreferrer">
-            {attribution.originalTitle}
-          </a>{' '}by {attribution.originalAuthor}, used under{' '}
-          <a href={attribution.licenseLink} class="link" target="_blank" rel="noopener noreferrer">
-            {attribution.licenseName}
-          </a>. All revisions, new sections and the web application are © {maintainer.name}.
+          Cyber Hygiene is written and maintained by {maintainer.name}. All revisions, new sections and the
+          web application are © {maintainer.name}.
         </p>
       </article>
 

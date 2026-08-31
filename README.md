@@ -60,6 +60,6 @@ That builds the client assets, pre-renders every route, and writes a branded `40
 
 ## Credits & licence
 
-Written and maintained by **Subash Jaganathan** — DFIR Expert, working in digital forensics, incident response and threat hunting.
+Written and maintained by **Subash Jaganathan** — DFIR Expert.
 
-Parts of the checklist content are adapted from the original **Personal Security Checklist** by Alicia Sykes, used under [Creative Commons Attribution 4.0 (CC BY 4.0)](./LICENSE). All revisions, new sections, and the web application are © Subash Jaganathan; the application code is licensed under the MIT License.
+All revisions, new sections, and the web application are © Subash Jaganathan; the application code is licensed under the MIT License.
