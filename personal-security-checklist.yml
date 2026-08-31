@@ -217,13 +217,16 @@
       as your 2FA authenticator as well, since it would become a single point of failure if compromised. Instead, use a
       dedicated authenticator app on your phone or laptop.
 
-  - point: Avoid Face Unlock
-    priority: Advanced
+  - point: Know Which Face Unlock You Have
+    priority: Optional
     details: >-
-      Most phones and laptops offer a facial recognition authentication feature, using the camera to compare a snapshot
-      of your face with a stored hash. It may be very convenient, but there are numerous ways to [fool it](https://www.forbes.com/sites/jvchamary/2017/09/18/security-apple-face-id-iphone-x/)
-      and gain access to the device through digital photos and reconstructions from CCTV footage. Unlike your password,
-      there are likely photos of your face on the internet and videos recorded by surveillance cameras.
+      Not all face unlock is equal. Systems with dedicated depth sensing — Apple's Face ID and Windows Hello
+      on supported hardware — build a 3D map and are not defeated by a photograph or a video. Basic camera-only
+      face unlock, common on cheaper Android devices, frequently is, and should not be trusted to protect
+      anything sensitive. The stronger reason to prefer a passcode is legal rather than technical: in many
+      jurisdictions authorities can compel a biometric unlock far more easily than a memorised passcode, so
+      learn the emergency shortcut that forces your device back to a PIN — holding power and a volume button
+      on iPhone, or pressing power five times on most Android devices.
 
   - point: Watch Out for Keyloggers
     priority: Advanced
@@ -1045,11 +1048,18 @@
     This section covers how you connect your devices to the internet securely,
     including configuring your router and setting up a VPN.
   checklist:
-  - point: Use a VPN
-    priority: Essential
+  - point: Understand What a VPN Does and Doesn't Do
+    priority: Optional
     details: >-
-      Use a reputable, paid-for VPN. This can help protect sites you visit from logging your real IP, reduce
-      the amount of data your ISP can collect, and increase protection on public WiFi.
+      A VPN moves trust; it does not remove it. Your ISP stops seeing which sites you visit — and the VPN
+      provider starts. That is a good trade when you have a specific reason (your ISP sells browsing data,
+      you are on a network you don't control, you need to appear in another country), and a poor one when you
+      simply want to "be secure": almost all traffic is already encrypted by HTTPS, so a VPN adds little
+      against the threats most people actually face. It does not make you anonymous, and it does not stop
+      sites fingerprinting or tracking you once you have logged in. If you do use one, pay for it — free
+      providers monetise your traffic — and pick one with an audited no-logs record such as
+      [Mullvad](https://mullvad.net) or [IVPN](https://www.ivpn.net). For genuine anonymity, use
+      [Tor](https://www.torproject.org) instead.
 
   - point: Change your Router Password
     priority: Essential
@@ -1458,11 +1468,15 @@
     details: >-
       Shut down your device when not in use, especially if your disk is encrypted, to keep data secure.
 
-  - point: Don't link your PC with your Microsoft or Apple Account
+  - point: Weigh Up Signing In to Your OS Account
     priority: Optional
     details: >-
-      Use a local account only to prevent data syncing and exposure. Avoid using sync services that compromise
-      privacy.
+      A Microsoft or Apple account syncs settings and files to the vendor's cloud, which is real data exposure
+      — but it also enables device location, remote wipe and activation lock, which are genuinely useful if
+      the machine is stolen, and on Windows it stores your BitLocker recovery key so you don't lose the disk.
+      A local account gives you less exposure and less of a safety net. If you sign in, turn off the syncing
+      you don't want (settings, clipboard, browsing) and keep the recovery features. Note that Windows 11 Home
+      makes a local account deliberately hard to choose during setup.
 
   - point: Check which Sharing Services are Enabled
     priority: Optional

@@ -71,13 +71,11 @@ export default component$(() => {
           </div>
 
           <div class="flex-grow min-w-0">
-            <h2 class={[styles.cardTitle, `text-${section.color}-400`]}>
-              {section.title}
-            </h2>
+            <h2 class={styles.cardTitle}>{section.title}</h2>
             <p class={styles.cardDescription}>{section.description}</p>
 
             <div class="flex items-center gap-2 mt-3">
-              <span class={[styles.pill, `text-${section.color}-400`, `border-${section.color}-400`]}>
+              <span class={[styles.pill, `border-${section.color}-400`]}>
                 {section.checklist.length} checks
               </span>
               {doneCount ? (
@@ -98,7 +96,7 @@ export default component$(() => {
           </div>
 
           {percent ? (
-            <span class={[styles.percent, `text-${section.color}-400`]}>{percent}%</span>
+            <span class={styles.percent}>{percent}%</span>
           ) : null}
         </a>
         );

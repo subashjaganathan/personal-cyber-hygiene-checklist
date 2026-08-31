@@ -143,7 +143,7 @@ export default component$(() => {
       <div class="drawer-side z-10">
         <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label> 
         <ul class="rounded-box menu p-4 w-80 min-h-full bg-base-200">
-          <h2 class="flex items-center gap-2 text-primary font-bold">
+          <h2 class="flex items-center gap-2 text-base-content font-bold">
             <Logo size={22} id="drawer" />
             Cyber Hygiene
           </h2>
@@ -177,30 +177,21 @@ export default component$(() => {
             </button>
           </li>
           <li>
-            <a href={withBase("/about")}>
-              <Icon class="mr-2" icon="about" width={16} height={16} />About
+            <a href="https://github.com/subashjaganathan/security-checklist/blob/main/CONTRIBUTING.md">
+              <Icon class="mr-2" icon="about" width={16} height={16} />Contributing
             </a>
-            <ul>
-              <li>
-                <a href="https://github.com/subashjaganathan/security-checklist/blob/main/CONTRIBUTING.md">Contributing</a>
-              </li>
-              <li>
-                <a href="https://github.com/subashjaganathan/security-checklist/blob/main/LICENSE">License</a>
-              </li>
-              <li>
-                <a href={withBase("/about#author")}>Credits</a>
-              </li>
-            </ul>
+          </li>
+          <li>
+            <a href="https://github.com/subashjaganathan/security-checklist/blob/main/LICENSE">
+              <Icon class="mr-2" icon="articles" width={16} height={16} />License
+            </a>
           </li>
         </ul>
       </div>
 
       <dialog id="settings_modal" class="modal">
         <div class="modal-box">
-          <div class="tabs tabs-lifted">
-            <p class="tab tab-active">Settings</p>
-            <a class="tab" href={withBase("/about")}>About</a>
-          </div>
+          <h3 class="font-bold text-lg mb-2">Settings</h3>
           <div class="modal-action justify-start w-full flex flex-col gap-4">
               <div class="flex items-between w-full justify-between">
                 <label for="theme" class="label">Theme</label>
