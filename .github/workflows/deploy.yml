@@ -48,9 +48,9 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # The base path nests the built site under dist/security-checklist/;
+          # The base path nests the built site under dist/personal-cyber-hygiene-checklist/;
           # that inner folder is the deployable site root.
-          path: web/dist/security-checklist
+          path: web/dist/personal-cyber-hygiene-checklist
 
   deploy:
     needs: build

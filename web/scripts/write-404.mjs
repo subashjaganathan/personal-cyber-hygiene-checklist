@@ -8,8 +8,8 @@ import { writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const BASE = '/security-checklist/';
-const distDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist', 'security-checklist');
+const BASE = '/personal-cyber-hygiene-checklist/';
+const distDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist', 'personal-cyber-hygiene-checklist');
 
 const html = `<!DOCTYPE html>
 <html lang="en-us">

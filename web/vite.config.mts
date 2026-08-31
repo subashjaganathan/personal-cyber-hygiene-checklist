@@ -5,7 +5,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig((): UserConfig => {
   return {
-    base: "/security-checklist/",
+    base: "/personal-cyber-hygiene-checklist/",
     plugins: [
       qwikCity(),
       qwikVite(),

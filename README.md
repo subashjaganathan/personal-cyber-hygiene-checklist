@@ -4,7 +4,7 @@
   <p><strong>Practical digital security, one step at a time.</strong></p>
 </div>
 
-🔗 **https://subashjaganathan.github.io/security-checklist/**
+🔗 **https://subashjaganathan.github.io/personal-cyber-hygiene-checklist/**
 
 A checklist of 278 specific, plain-English things you can do to make your digital life harder to attack. You work through it at your own pace, ticking items off as you go.
 

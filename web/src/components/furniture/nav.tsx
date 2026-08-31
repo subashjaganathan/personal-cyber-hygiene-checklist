@@ -110,7 +110,7 @@ export default component$(() => {
               </details>
             </li>
             <li>
-              <a href="https://github.com/subashjaganathan/security-checklist"
+              <a href="https://github.com/subashjaganathan/personal-cyber-hygiene-checklist"
                 class="tooltip flex tooltip-bottom" data-tip="View / Edit Source & Data">
                 <Icon icon="github" width={16} height={16}  />GitHub
               </a>
@@ -148,7 +148,7 @@ export default component$(() => {
             Cyber Hygiene
           </h2>
           <li><a href={withBase("/")}><Icon class="mr-2" icon="homepage" width={16} height={16}  />Home</a></li>
-          <li><a href="https://github.com/subashjaganathan/security-checklist">
+          <li><a href="https://github.com/subashjaganathan/personal-cyber-hygiene-checklist">
             <Icon class="mr-2" icon="github" width={16} height={16}  />GitHub</a>
           </li>
           <li>
@@ -177,12 +177,12 @@ export default component$(() => {
             </button>
           </li>
           <li>
-            <a href="https://github.com/subashjaganathan/security-checklist/blob/main/CONTRIBUTING.md">
+            <a href="https://github.com/subashjaganathan/personal-cyber-hygiene-checklist/blob/main/CONTRIBUTING.md">
               <Icon class="mr-2" icon="about" width={16} height={16} />Contributing
             </a>
           </li>
           <li>
-            <a href="https://github.com/subashjaganathan/security-checklist/blob/main/LICENSE">
+            <a href="https://github.com/subashjaganathan/personal-cyber-hygiene-checklist/blob/main/LICENSE">
               <Icon class="mr-2" icon="articles" width={16} height={16} />License
             </a>
           </li>

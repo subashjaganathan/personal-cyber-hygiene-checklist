@@ -2,21 +2,21 @@
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "Cyber Hygiene · Practical Digital Security",
   "short_name": "Cyber Hygiene",
-  "start_url": "/security-checklist/",
-  "scope": "/security-checklist/",
+  "start_url": "/personal-cyber-hygiene-checklist/",
+  "scope": "/personal-cyber-hygiene-checklist/",
   "display": "standalone",
   "theme_color": "#8b5cf6",
   "background_color": "#0f172a",
   "description": "Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more.",
   "icons": [
     {
-      "src": "/security-checklist/favicon.png",
+      "src": "/personal-cyber-hygiene-checklist/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/security-checklist/favicon.png",
+      "src": "/personal-cyber-hygiene-checklist/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
