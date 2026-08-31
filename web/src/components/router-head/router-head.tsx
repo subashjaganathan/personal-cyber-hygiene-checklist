@@ -24,8 +24,10 @@ export const RouterHead = component$(() => {
       <meta name="description" content="Practical digital security, one step at a time — a free, open checklist covering authentication, browsing, devices, networks, AI and more." />
 
       {/* Site config */}
+      <meta name="author" content="Subash Jaganathan" />
       <link rel="canonical" href={loc.url.href} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="icon" type="image/svg+xml" href={withBase("/logo.svg")} />
       <link rel="icon" type="image/png" href={withBase("/favicon.png")} />
       <link rel="apple-touch-icon" href={withBase("/favicon.png")} />
       <meta name="theme-color" content="#8b5cf6" />

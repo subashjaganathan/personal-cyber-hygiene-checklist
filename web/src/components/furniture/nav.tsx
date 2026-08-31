@@ -1,6 +1,7 @@
 
 import { $, component$, useContext } from "@builder.io/qwik";
 import Icon from "~/components/core/icon";
+import Logo from "~/components/core/logo";
 import type { Section } from '~/types/PSC';
 import { useTheme } from '~/store/theme-store';
 import { ChecklistContext } from '~/store/checklist-context';
@@ -84,7 +85,7 @@ export default component$(() => {
             </label>
           </div> 
           <a href={withBase("/")} class="btn btn-ghost text-xl flex capitalize">
-            <label for="my-drawer-3" aria-label="open sidebar" class="tooltip tooltip-bottom" data-tip="View all Pages"><Icon class="mr-2" icon="shield" width={28} height={28}  /></label>
+            <label for="my-drawer-3" aria-label="open sidebar" class="tooltip tooltip-bottom mr-2" data-tip="View all Pages"><Logo size={30} id="nav" /></label>
             <h1 class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent font-extrabold whitespace-nowrap">Cyber Hygiene</h1>
           </a>
         </div>
@@ -142,8 +143,8 @@ export default component$(() => {
       <div class="drawer-side z-10">
         <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label> 
         <ul class="rounded-box menu p-4 w-80 min-h-full bg-base-200">
-          <h2 class="flex text-primary">
-          <Icon class="mr-2" icon="shield" width={16} height={16}  />
+          <h2 class="flex items-center gap-2 text-primary font-bold">
+            <Logo size={22} id="drawer" />
             Cyber Hygiene
           </h2>
           <li><a href={withBase("/")}><Icon class="mr-2" icon="homepage" width={16} height={16}  />Home</a></li>

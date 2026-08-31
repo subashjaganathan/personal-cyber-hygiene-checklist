@@ -16,9 +16,11 @@ export const contributing = [
 // The person who curates and maintains this deployment.
 export const maintainer = {
   name: 'Subash Jaganathan',
-  role: 'Senior Cyber Security Consultant — DFIR, SOC & Threat Hunting',
-  blurb: `I help organisations detect, investigate, and respond to cyber threats. Cyber Hygiene is my curated, `
-    + `freely available checklist to help everyone raise their personal security baseline.`,
+  designation: 'DFIR Expert',
+  role: 'Digital Forensics, Incident Response, SOC & Threat Hunting',
+  blurb: `I investigate and respond to cyber intrusions for a living — which means I spend a lot of time seeing `
+    + `how people actually get compromised, and how rarely it involves anything exotic. Cyber Hygiene is the `
+    + `checklist I wish everyone had already worked through before I meet them.`,
   portfolio: 'https://subashjaganathan.github.io',
   github: 'https://github.com/subashjaganathan',
 };

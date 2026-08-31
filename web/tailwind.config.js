@@ -22,11 +22,28 @@ module.exports = {
   daisyui: {
     themes: [
       {
+        /*
+         * The stock light theme washed everything out to the same flat grey.
+         * This gives it a cool near-white canvas with a hint of blue, deeper
+         * ink for text, and brighter accents so the gradients actually read.
+         */
         light: {
-          ...applyCustomColors("light", "237 9% 86% / 0.75", "237 9% 86% / 1"),
-          primary: "#7c3aed",
-          secondary: "#db2777",
-          accent: "#0891b2",
+          ...applyCustomColors("light", "225 40% 92% / 0.85", "225 45% 97% / 1"),
+          "base-100": "#ffffff",
+          "base-200": "#f3f5fc",
+          "base-300": "#e4e9f7",
+          "base-content": "#1b2138",
+          primary: "#6d28d9",
+          "primary-content": "#ffffff",
+          secondary: "#e11d74",
+          "secondary-content": "#ffffff",
+          accent: "#0ea5b7",
+          "accent-content": "#ffffff",
+          neutral: "#2b3350",
+          info: "#2563eb",
+          success: "#0f9d6e",
+          warning: "#c2740a",
+          error: "#dc2626",
         },
       },
       {

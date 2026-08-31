@@ -1,6 +1,9 @@
-# Cyber Hygiene
-
-**Practical digital security, one step at a time.**
+<div align="center">
+  <img src="web/public/logo.svg" width="72" alt="">
+  <h1>Cyber Hygiene</h1>
+  <p><strong>Practical digital security, one step at a time.</strong></p>
+  <p>By <a href="https://subashjaganathan.github.io">Subash Jaganathan</a> · DFIR Expert</p>
+</div>
 
 🔗 https://subashjaganathan.github.io/security-checklist/
 
@@ -57,6 +60,6 @@ That builds the client assets, pre-renders every route, and writes a branded `40
 
 ## Credits & licence
 
-Curated and maintained by **Subash Jaganathan**.
+Written and maintained by **Subash Jaganathan** — DFIR Expert, working in digital forensics, incident response and threat hunting.
 
-The checklist content is adapted from the original **Personal Security Checklist** by Alicia Sykes, and is shared under [Creative Commons Attribution 4.0 (CC BY 4.0)](./LICENSE). Modifications, additional content, and the web application are © Subash Jaganathan; the application code is licensed under the MIT License.
+Parts of the checklist content are adapted from the original **Personal Security Checklist** by Alicia Sykes, used under [Creative Commons Attribution 4.0 (CC BY 4.0)](./LICENSE). All revisions, new sections, and the web application are © Subash Jaganathan; the application code is licensed under the MIT License.

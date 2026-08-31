@@ -6,6 +6,7 @@ import { ChecklistContext } from '~/store/checklist-context';
 import { parseMarkdown } from '~/utils/checklist';
 import type { Section } from "~/types/PSC";
 import Table from '~/components/psc/checklist-table';
+import styles from './section.module.css';
 import { useChecklists } from '~/routes/layout';
 
 export default component$(() => {
@@ -21,11 +22,24 @@ export default component$(() => {
   return (
     <div class="md:my-8 md:px-16 sm:px-2 rounded-md">
     <article class="bg-back p-8 mx-auto w-full max-w-[1200px] rounded-lg shadow-md">
-      <h1 class={['gap-2 text-5xl font-bold capitalize flex']}>
-        <Icon height={36} width={36} icon={section?.icon || 'star'}  />
-        {section?.title}
-      </h1>
-      <p class="py-2" dangerouslySetInnerHTML={parseMarkdown(section?.intro)}></p>
+      {/* Coloured masthead, tinted with the section's own accent so each area
+          is visually distinct as you move between them */}
+      <header class={[styles.masthead, `bg-${section?.color}-400`]}>
+        <span class={[styles.mastheadWash, `bg-${section?.color}-400`]} aria-hidden="true"></span>
+        <div class={[styles.mastheadIcon, `text-${section?.color}-400`]}>
+          <Icon height={30} width={30} icon={section?.icon || 'star'} />
+        </div>
+        <div class="min-w-0">
+          <p class={styles.eyebrow}>
+            {section?.checklist.length} checks · Cyber Hygiene
+          </p>
+          <h1 class={['text-4xl sm:text-5xl font-extrabold capitalize', styles.mastheadTitle]}>
+            {section?.title}
+          </h1>
+        </div>
+      </header>
+
+      <p class="py-4 text-lg opacity-80" dangerouslySetInnerHTML={parseMarkdown(section?.intro)}></p>
 
       <div class="overflow-x-auto">
         {section && (<Table section={section} />)}

@@ -3,7 +3,8 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 
 import Icon from "~/components/core/icon";
 import { parseMarkdown } from "~/utils/checklist";
-import { socials, intro, contributing, maintainer } from './about-content';
+import styles from "./about.module.css";
+import { socials, intro, contributing, maintainer, attribution } from './about-content';
 
 export default component$(() => {
 
@@ -26,12 +27,21 @@ export default component$(() => {
       <div class="divider"></div>
 
       <article class="bg-back p-8 mx-auto max-w-[1200px] my-8 rounded-lg shadow-md">
-        <h2 class="text-3xl mb-2" id="author">Credits</h2>
-        <p class="mb-2">
-          Cyber Hygiene is curated and maintained by{' '}
-          <a href={maintainer.portfolio} class="link link-primary font-semibold">{maintainer.name}</a>.
-        </p>
-        <p class="text-sm opacity-80 mb-4">{maintainer.role}</p>
+        <h2 class="text-3xl mb-4" id="author">Credits</h2>
+
+        <div class="flex items-center gap-4 mb-5">
+          <div class={styles.avatar} aria-hidden="true">
+            {maintainer.name.split(' ').map((part) => part[0]).join('')}
+          </div>
+          <div>
+            <a href={maintainer.portfolio} class="text-xl font-bold link link-primary">
+              {maintainer.name}
+            </a>
+            <p class={styles.designation}>{maintainer.designation}</p>
+            <p class="text-sm opacity-70">{maintainer.role}</p>
+          </div>
+        </div>
+
         <p class="mb-4">{maintainer.blurb}</p>
         <div class="flex gap-3 my-2">
           {socials.map((social, index) => (
@@ -47,6 +57,17 @@ export default component$(() => {
             </a>
           ))}
         </div>
+
+        <p class="text-xs opacity-60 mt-8 pt-4 border-t border-base-content/10">
+          Cyber Hygiene is written and maintained by {maintainer.name}. Parts of the checklist content are
+          adapted from{' '}
+          <a href={attribution.originalRepo} class="link" target="_blank" rel="noopener noreferrer">
+            {attribution.originalTitle}
+          </a>{' '}by {attribution.originalAuthor}, used under{' '}
+          <a href={attribution.licenseLink} class="link" target="_blank" rel="noopener noreferrer">
+            {attribution.licenseName}
+          </a>. All revisions, new sections and the web application are © {maintainer.name}.
+        </p>
       </article>
 
     </div>
