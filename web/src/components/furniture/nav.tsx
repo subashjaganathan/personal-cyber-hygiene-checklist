@@ -3,7 +3,6 @@ import { $, component$, useContext } from "@builder.io/qwik";
 import Icon from "~/components/core/icon";
 import type { Section } from '~/types/PSC';
 import { useTheme } from '~/store/theme-store';
-import articles from '~/data/articles';
 import { ChecklistContext } from '~/store/checklist-context';
 import { withBase } from '~/utils/base';
 
@@ -116,18 +115,6 @@ export default component$(() => {
                   {item.title}
                 </a>
               </li>
-              ))}
-            </ul>
-          </li>
-          <li>
-            <a href={withBase("/article")}>
-              <Icon class="mr-2" icon="articles" width={16} height={16} />Articles
-            </a>
-            <ul>
-              {articles.map(article => (
-                <li key={article.slug}>
-                  <a href={withBase(`/article/${article.slug}`)}>{article.title}</a>
-                </li>
               ))}
             </ul>
           </li>

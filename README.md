@@ -41,9 +41,6 @@ Pushing to `main` triggers the [`Deploy to GitHub Pages`](./.github/workflows/de
 
 ## Credits & License
 
-This project is based on [**Personal Security Checklist**](https://github.com/lissy93/personal-security-checklist) by [Alicia Sykes](https://aliciasykes.com).
+Curated and maintained by **Subash Jaganathan**.
 
-- The **checklist content** is licensed under [Creative Commons Attribution 4.0 (CC BY 4.0)](./LICENSE) — © Alicia Sykes.
-- The **web application code** is licensed under the MIT License.
-
-If you find this useful, please consider starring the [original repository](https://github.com/lissy93/personal-security-checklist) to support the author's work.
+The checklist content is adapted from the original **Personal Security Checklist** by Alicia Sykes, and is shared under [Creative Commons Attribution 4.0 (CC BY 4.0)](./LICENSE). Modifications, additional content, and the web application are © Subash Jaganathan; the application code is licensed under the MIT License.
