@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 import Icon from "~/components/core/icon";
-import { socials, intro, contributing, maintainer, attribution } from './about-content';
+import { socials, intro, contributing, maintainer } from './about-content';
 import { marked } from "marked";
 
 export default component$(() => {
@@ -51,27 +51,6 @@ export default component$(() => {
             </a>
           ))}
         </div>
-      </article>
-
-      <div class="divider"></div>
-
-      <article class="bg-back p-8 mx-auto max-w-[1200px] m-8 rounded-lg shadow-md">
-        <h2 class="text-3xl mb-2">Licence & Attribution</h2>
-        <p class="mb-2">
-          The checklist content is adapted from{' '}
-          <a href={attribution.originalRepo} class="link link-primary">
-            {attribution.originalTitle}
-          </a>{' '}
-          by {attribution.originalAuthor}, and is shared under the{' '}
-          <a href={attribution.licenseLink} class="link link-primary">
-            <b>{attribution.licenseName}</b>
-          </a>{' '}
-          licence. Modifications and additional content © {maintainer.name}.
-        </p>
-        <p class="text-sm opacity-80">
-          Under CC BY 4.0 you are free to share and adapt this material for any purpose,
-          provided you give appropriate credit to the original author.
-        </p>
       </article>
 
     </div>
