@@ -2,64 +2,62 @@
   <img src="web/public/logo.svg" width="72" alt="">
   <h1>Cyber Hygiene</h1>
   <p><strong>Practical digital security, one step at a time.</strong></p>
-  <p>By <a href="https://subashjaganathan.github.io">Subash Jaganathan</a> · DFIR Expert</p>
 </div>
 
-🔗 https://subashjaganathan.github.io/security-checklist/
+🔗 **https://subashjaganathan.github.io/security-checklist/**
 
-Most security advice is either too vague to act on ("use strong passwords") or written for people who already work in the field. This is an attempt at something in between: 278 specific, plain-English things you can actually do, sorted into 15 areas, with each one marked Essential, Optional or Advanced so you can tell what's worth your time.
+A checklist of 278 specific, plain-English things you can do to make your digital life harder to attack. You work through it at your own pace, ticking items off as you go.
 
-You tick items off as you go. Your progress is saved in your browser and nowhere else — there's no account, no backend, and no analytics. If you clear your browser data it's gone, which is why there's an export button in the settings.
+## How to use it
 
-## Start here
+Open the site and start with **Getting Started**. It's six short questions that help you decide what you're actually protecting and who from. Ten minutes there tells you which of the remaining checks matter for you and which you can skip — nobody needs all 278, and trying to do everything is the fastest way to give up.
 
-Nobody should do all 278. The [Getting Started](https://subashjaganathan.github.io/security-checklist/checklist/getting-started/) section is six questions that help you work out which of the rest actually apply to you — what you're protecting, and who from. Ten minutes there will save you a lot of wasted effort later.
+From there, pick whichever area is most relevant and work down it. Each item explains what the risk is and what to do about it, so you're not just following instructions blindly.
 
-If you only ever do four things: use a password manager with a unique password everywhere, put phishing-resistant 2FA on your email, turn on automatic updates, and tighten your account recovery options. Those four block the overwhelming majority of real-world compromises.
+## Reading the levels
+
+Every check is labelled, and the label is the fastest way to decide where to spend your effort:
+
+| Level | What it means |
+|---|---|
+| **Essential** | Do these. They block the attacks that actually happen to ordinary people. |
+| **Optional** | Sensible improvements. Worth doing once the essentials are covered. |
+| **Advanced** | For people with a specific reason — a heightened threat model, or a professional need. Most people can skip these. |
+
+If you only ever do four things: use a password manager with a unique password everywhere, put phishing-resistant two-factor on your email, turn on automatic updates, and tighten your account recovery options. Those four cover the overwhelming majority of real-world compromises.
+
+## Tracking your progress
+
+Tick the checkbox next to an item to mark it done. If a check doesn't apply to you — you don't own a smart speaker, you don't use cryptocurrency — use the **Ignore** toggle instead. Ignored items drop out of your completion percentage, so your progress reflects what you actually set out to do.
+
+The home page shows overall progress, a breakdown by level, and a radar chart of how far along you are in each area.
+
+## Finding things
+
+The **All Checklists** page has a search box that looks across every item's title and full description at once. Useful when you remember advice but not where it lives, or when you want to see everything the checklist says about, say, backups or encryption.
+
+Inside an area, **Show Filters** lets you hide completed items to see only what's left, or narrow to a single level.
+
+## Your data stays with you
+
+Progress is stored in your browser's local storage. There's no account, no server, and no analytics — nothing is uploaded anywhere, and nobody else can see what you've ticked.
+
+The trade-off is that clearing your browser data wipes it, and your progress doesn't follow you between devices. So under **Settings**:
+
+- **Export** downloads your progress as a JSON file. Worth doing occasionally.
+- **Import** restores it from that file — use it to move to another browser or machine.
+- **Delete All** clears everything this site has stored.
+
+Settings is also where you change the theme; there are fourteen to choose from, and it remembers your choice.
 
 ## What's covered
 
 Getting Started · Authentication · Web Browsing · Email · Messaging · Social Media · Networks · Mobile Devices · Personal Computers · Backup & Recovery · Smart Home · Personal Finance · Human Aspect · Physical Security · AI & Privacy
 
-## A note on the advice
+## Something wrong?
 
-Security guidance ages badly, and a lot of what circulates online is years out of date. Things like hiding your Wi-Fi SSID, filtering by MAC address, or rotating your passwords every 90 days are still repeated constantly, and all three are either useless or actively counterproductive — NIST has recommended against scheduled password rotation since 2017.
+Security advice goes stale, and links rot. If you spot something out of date, incorrect, or missing, please open an issue — that's genuinely the most useful thing you can contribute.
 
-So the content here gets pruned as well as extended. Advice that no longer holds up is removed rather than left in place, and where the honest answer is "this is more complicated than it looks" — cryptocurrency privacy, fingerprint spoofing — it says so instead of pretending otherwise.
-
-If you spot something that's wrong or stale, please open an issue. That's genuinely the most useful contribution.
-
-## Running it locally
-
-The checklist content lives in [`personal-security-checklist.yml`](./personal-security-checklist.yml) at the repo root. The web app reads it at build time, so adding or editing advice needs no code changes.
-
-```bash
-cd web
-npm install --legacy-peer-deps
-npm start
-```
-
-To build the static site as it's deployed:
-
-```bash
-cd web
-npm run build.pages
-```
-
-That builds the client assets, pre-renders every route, and writes a branded `404.html`. Output lands in `web/dist/security-checklist/`.
-
-> **On the base path:** the site is served from a sub-path (`/security-checklist/`), so `web/vite.config.mts` sets Vite's `base`, and internal links go through the `withBase()` helper in `web/src/utils/base.ts`. Forking this under a different repo name means updating the base path in `vite.config.mts`, `web/public/manifest.json`, `web/scripts/write-404.mjs`, and the artifact path in the deploy workflow.
-
-## Contributing
-
-[CONTRIBUTING.md](./CONTRIBUTING.md) covers how the YAML is structured, the rules the app relies on (valid priority values, unique slugs, which colours and icons exist), and what to run before opening a pull request.
-
-## Built with
-
-[Qwik](https://qwik.dev) and Tailwind, rendered as a fully static site and hosted on GitHub Pages. Fonts are self-hosted rather than pulled from Google — it seemed hypocritical to leak every visitor's IP to a third party from a privacy checklist. Pushing to `main` triggers the [deploy workflow](./.github/workflows/deploy.yml); Settings → Pages → Source needs to be set to **GitHub Actions**.
-
-## Credits & licence
+---
 
 Written and maintained by **Subash Jaganathan** — DFIR Expert.
-
-All revisions, new sections, and the web application are © Subash Jaganathan; the application code is licensed under the MIT License.
