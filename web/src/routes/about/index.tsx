@@ -14,7 +14,7 @@ export default component$(() => {
   return (
     <div class="m-4 md:mx-16">
       <article class="bg-back p-8 mx-auto max-w-[1200px] m-8 rounded-lg shadow-md">
-        <h2 class="text-3xl mb-2">About Aegis</h2>
+        <h2 class="text-3xl mb-2">About Cyber Hygiene</h2>
         {intro.map((paragraph, index) => (
           <p class="mb-2" key={index}>{paragraph}</p>
         ))}
@@ -32,7 +32,7 @@ export default component$(() => {
       <article class="bg-back p-8 mx-auto max-w-[1200px] my-8 rounded-lg shadow-md">
         <h2 class="text-3xl mb-2" id="author">Credits</h2>
         <p class="mb-2">
-          Aegis is curated and maintained by{' '}
+          Cyber Hygiene is curated and maintained by{' '}
           <a href={maintainer.portfolio} class="link link-primary font-semibold">{maintainer.name}</a>.
         </p>
         <p class="text-sm opacity-80 mb-4">{maintainer.role}</p>
@@ -79,11 +79,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "About | Aegis",
+  title: "About | Cyber Hygiene",
   meta: [
     {
       name: "description",
-      content: "About Aegis — a practical checklist to improve your digital security and protect your privacy online.",
+      content: "About Cyber Hygiene — a practical checklist to improve your digital security and protect your privacy online.",
     },
   ],
 };

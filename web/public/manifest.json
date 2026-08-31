@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "Aegis · Personal Security & Privacy Checklist",
-  "short_name": "Aegis",
+  "name": "Cyber Hygiene · Personal Security & Privacy Checklist",
+  "short_name": "Cyber Hygiene",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#8b5cf6",

@@ -1,4 +1,4 @@
-# Aegis — Personal Security & Privacy Checklist
+# Cyber Hygiene — Personal Security & Privacy Checklist
 
 A comprehensive, interactive checklist to help you secure your digital life — covering authentication, web browsing, email, messaging, networks, devices, AI & privacy, and more.
 

@@ -41,7 +41,7 @@ export default component$(() => {
           </div> 
           <a href={withBase("/")} class="btn btn-ghost text-xl flex capitalize">
             <label for="my-drawer-3" aria-label="open sidebar" class="tooltip tooltip-bottom" data-tip="View all Pages"><Icon class="mr-2" icon="shield" width={28} height={28}  /></label>
-            <h1 class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent font-extrabold">Aegis</h1>
+            <h1 class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent font-extrabold whitespace-nowrap">Cyber Hygiene</h1>
           </a>
         </div>
         <div class="flex-none hidden md:flex">
@@ -100,7 +100,7 @@ export default component$(() => {
         <ul class="rounded-box menu p-4 w-80 min-h-full bg-base-200">
           <h2 class="flex text-primary">
           <Icon class="mr-2" icon="shield" width={16} height={16}  />
-            Aegis
+            Cyber Hygiene
           </h2>
           <li><a href={withBase("/")}><Icon class="mr-2" icon="homepage" width={16} height={16}  />Home</a></li>
           <li><a href="https://github.com/subashjaganathan/security-checklist">

@@ -1,5 +1,5 @@
 export const intro = [
-  `Aegis is a practical, interactive checklist to help you improve your digital security and protect your privacy online.`,
+  `Cyber Hygiene is a practical, interactive checklist to help you improve your digital security and protect your privacy online.`,
   `
   It's organised into focused sections — from passwords and devices to networks, social media, and AI —
   so you can work through the steps that matter most to you, track your progress, and come back any time.
@@ -17,7 +17,7 @@ export const contributing = [
 export const maintainer = {
   name: 'Subash Jaganathan',
   role: 'Senior Cyber Security Consultant — DFIR, SOC & Threat Hunting',
-  blurb: `I help organisations detect, investigate, and respond to cyber threats. Aegis is my curated, `
+  blurb: `I help organisations detect, investigate, and respond to cyber threats. Cyber Hygiene is my curated, `
     + `freely available checklist to help everyone raise their personal security baseline.`,
   portfolio: 'https://subashjaganathan.github.io',
   github: 'https://github.com/subashjaganathan',

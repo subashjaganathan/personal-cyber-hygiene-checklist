@@ -24,7 +24,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Aegis · Personal Security & Privacy Checklist",
+  title: "Cyber Hygiene · Personal Security & Privacy Checklist",
   meta: [
     {
       name: "description",
