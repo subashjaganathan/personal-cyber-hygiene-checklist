@@ -7,6 +7,59 @@ import type { Priority, Sections, Section } from '~/types/PSC';
 import Icon from '~/components/core/icon';
 import { withBase } from '~/utils/base';
 
+// A short, curated list of trusted privacy-respecting apps, shown on the home page.
+const recommendedApps: { category: string; apps: { name: string; url: string }[] }[] = [
+  {
+    category: 'Password manager',
+    apps: [
+      { name: 'Bitwarden', url: 'https://bitwarden.com' },
+      { name: 'KeePassXC', url: 'https://keepassxc.org' },
+    ],
+  },
+  {
+    category: 'Browser',
+    apps: [
+      { name: 'Firefox', url: 'https://www.mozilla.org/firefox/' },
+      { name: 'Brave', url: 'https://brave.com' },
+      { name: 'Mullvad', url: 'https://mullvad.net/browser' },
+    ],
+  },
+  {
+    category: 'Search',
+    apps: [
+      { name: 'DuckDuckGo', url: 'https://duckduckgo.com' },
+      { name: 'Startpage', url: 'https://www.startpage.com' },
+    ],
+  },
+  {
+    category: 'Email',
+    apps: [
+      { name: 'Proton Mail', url: 'https://proton.me/mail' },
+      { name: 'Tuta', url: 'https://tuta.com' },
+    ],
+  },
+  {
+    category: 'Messaging',
+    apps: [
+      { name: 'Signal', url: 'https://signal.org' },
+    ],
+  },
+  {
+    category: 'VPN',
+    apps: [
+      { name: 'Mullvad', url: 'https://mullvad.net' },
+      { name: 'Proton VPN', url: 'https://protonvpn.com' },
+    ],
+  },
+  {
+    category: '2FA app',
+    apps: [
+      { name: 'Ente Auth', url: 'https://ente.io/auth' },
+      { name: '2FAS', url: 'https://2fas.com' },
+    ],
+  },
+];
+
 /**
  * Component for client-side user progress metrics.
  * Combines checklist data with progress from local storage,
@@ -324,16 +377,30 @@ export default component$(() => {
         </div>
         ))}
       </div>
-      {/* Something ??? */}
+      {/* Recommended privacy-respecting apps */}
       <div class="p-4 rounded-box bg-front shadow-md w-96 flex-grow">
-        <p class="text-sm opacity-80 mb-2">
-          Next up, consider switching to more secure and
-          privacy-respecting apps and services.
+        <p class="text-sm opacity-80 mb-3">
+          Next up, consider switching to more secure and privacy-respecting
+          apps and services. A few solid, trusted picks to get you started:
         </p>
-        <p class="text-lg">
-          View our directory of recommended software,
-          at <a class="link link-secondary font-bold" href="https://awesome-privacy.xyz">awesome-privacy.xyz</a>
-        </p>
+        <ul class="text-sm space-y-1.5">
+          {recommendedApps.map((cat) => (
+            <li key={cat.category}>
+              <b>{cat.category}:</b>{' '}
+              {cat.apps.map((app, i) => (
+                <span key={app.name}>
+                  {i > 0 && ', '}
+                  <a
+                    class="link link-secondary"
+                    href={app.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{app.name}</a>
+                </span>
+              ))}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
 
